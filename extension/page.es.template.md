@@ -12,12 +12,15 @@ draft: false
 bilingual: true
 kind: preprint
 version: "2.0"
+repository: "https://github.com/CristhianRudolf7/sage-creh"
 authors:
   - "Cristhian Egoavil"
 pdf: "/investigacion/documentos/subagentes-arquitecturas-tokens-tiempo-2026-v2-es.pdf"
 ---
 
 ## ¿Cómo conviene organizar los subagentes?
+
+Código y datos reproducibles: [repositorio SAGE-CREH en GitHub](https://github.com/CristhianRudolf7/sage-creh).
 
 El objetivo de esta investigación es comparar **arquitecturas de coordinación y reparto de skills**, no modelos distintos. ¿Quién resuelve? ¿Quién comprueba? ¿Cuándo aporta valor delegar? ¿Qué instrucciones necesita realmente cada trabajador?
 

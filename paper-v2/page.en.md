@@ -12,12 +12,15 @@ draft: false
 bilingual: true
 kind: preprint
 version: "2.0"
+repository: "https://github.com/CristhianRudolf7/sage-creh"
 authors:
   - "Cristhian Egoavil"
 pdf: "/investigacion/documentos/subagentes-arquitecturas-tokens-tiempo-2026-v2-en.pdf"
 ---
 
 ## How should subagents be organized?
+
+Reproducible code and data: [SAGE-CREH repository on GitHub](https://github.com/CristhianRudolf7/sage-creh).
 
 This research compares **coordination architectures and skill distribution**, not different models. Who solves? Who checks? When does delegation add value? Which instructions does each worker actually need?
 
