@@ -1,0 +1,30 @@
+\clearpage
+\section*{Appendix: historical v1 results}
+The earlier wave contained 144 runs, 416 calls and 568,283 tokens, preserved unchanged. SQL normalization was post hoc in v1 and predefined as secondary in v2. Waves are not pooled.
+\begin{center}\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{@{}Xrrrrr@{}}
+\toprule Configuration & Strict & SQL norm. & Tokens & s/task & Calls \\ \midrule
+Single agent & 20/24 & 23/24 & 1,143 & 4.72 & 24 \\
+Sequential & 20/24 & 24/24 & 3,410 & 13.72 & 72 \\
+Parallel & 19/24 & 23/24 & 3,520 & 8.14 & 72 \\
+Hierarchical & 20/24 & 24/24 & 4,373 & 11.19 & 95 \\
+Reflexive & 20/24 & 24/24 & 2,714 & 9.77 & 58 \\
+Hierarchy + 10 skills & 21/24 & 24/24 & 8,518 & 11.93 & 95 \\
+\bottomrule
+\end{tabularx}\end{center}
+
+\subsection*{Reproducing and auditing the materials}
+The public archive contains code, data and editable sources for both versions. Extract it and work from its root, installing \texttt{requirements.txt} dependencies in an isolated environment. To verify and regenerate the preserved wave without calling the API:
+\begin{verbatim}
+python3 -m unittest discover -s benchmark -v
+python3 -m unittest discover -s extension -v
+python3 extension/analyze.py
+python3 extension/write_results.py
+python3 extension/write_web.py
+\end{verbatim}
+Offline tests do not produce model scores. The analyzer checks all 216 runs, task identity, order, frozen copies, loaded instructions and per-call usage. The generator writes numeric sections; authored conclusions remain separate. Compile each \texttt{article.tex} twice from \texttt{paper-v2/es} and \texttt{paper-v2/en} using pdfLaTeX.
+
+A new live replication requires an authorized key and incurs API cost. Always use a new output directory and follow \texttt{extension/README.md}; do not overwrite the policy decision or published traces. The model is an alias, so later replication does not guarantee identical answers or time.
+
+Package v2 integrity can be checked with \texttt{ARTIFACTS-v2.sha256}; downloadable files additionally have a \texttt{SHA256SUMS.txt} manifest. Traces contain synthetic public inputs, visible responses and reported usage, never authorization headers.

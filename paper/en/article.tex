@@ -1,0 +1,21 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[english]{creh-article}
+\usepackage{array}
+\setlength{\emergencystretch}{2em}
+\newcommand{\source}[2]{\footnote{\href{#1}{#2}.}}
+\begin{document}
+\ArticleTitle{PREPRINT / EXPLORATORY STUDY}{Subagent coordination:\\tokens, time and task completion}{13 September 2026 / v1.0}
+\input{abstract.tex}
+\Keywords{multi-agent systems; orchestration; agent skills; token efficiency; reproducible evaluation.}
+\section{Introduction}
+A personal assistant can delegate work to specialized agents, but each delegation consumes resources before it produces useful work. Instructions must be prepared, context transferred, responses awaited and results integrated. A team can finish independent work sooner; it can also repeat an easy calculation several times without improving the answer. The relevant engineering question is therefore when coordination earns its overhead.
+
+This study investigates how to choose a subagent architecture by balancing task completion, token consumption and elapsed time. It compares four bounded coordination patterns with an undivided solver and separately tests loading a complete skill library. The contribution is a transparent, small empirical comparison: fixed tasks, actual model calls, deterministic evaluation, per-call resource records and bilingual editable artifacts. It does not introduce a new trained model or establish a production architecture benchmark.
+
+We distinguish three quantities that are often conflated. Task success concerns the delivered result. Total tokens measure the work processed across all calls, including repeated context. Elapsed time measures what a user waits through, allowing calls to overlap. A shorter context in one worker does not, by itself, imply fewer total tokens or lower RAM usage in the host application.
+\input{literature.tex}
+\input{methods.tex}
+\input{results.tex}
+\input{discussion.tex}
+\input{references.tex}
+\end{document}

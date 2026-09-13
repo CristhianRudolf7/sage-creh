@@ -1,0 +1,30 @@
+\clearpage
+\section*{Apéndice: resultados históricos v1}
+La tanda anterior incluyó 144 ejecuciones, 416 llamadas y 568,283 tokens, conservados sin cambios. Su normalización SQL fue post hoc; en v2 se predefinió como secundaria. No se mezclan tandas.
+\begin{center}\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{@{}Xrrrrr@{}}
+\toprule Configuración & Estricto & SQL norm. & Tokens & s/tarea & Llamadas \\ \midrule
+Agente único & 20/24 & 23/24 & 1,143 & 4.72 & 24 \\
+Secuencial & 20/24 & 24/24 & 3,410 & 13.72 & 72 \\
+Paralela & 19/24 & 23/24 & 3,520 & 8.14 & 72 \\
+Jerárquica & 20/24 & 24/24 & 4,373 & 11.19 & 95 \\
+Reflexiva & 20/24 & 24/24 & 2,714 & 9.77 & 58 \\
+Jerárquica + 10 skills & 21/24 & 24/24 & 8,518 & 11.93 & 95 \\
+\bottomrule
+\end{tabularx}\end{center}
+
+\subsection*{Cómo reproducir y auditar los materiales}
+El archivo público incluye código, datos y fuentes editables de ambas versiones. Descomprimirlo y trabajar desde su raíz, con las dependencias de \texttt{requirements.txt} instaladas en un entorno aislado. Para verificar y regenerar los resultados de la tanda conservada, sin llamar a la API:
+\begin{verbatim}
+python3 -m unittest discover -s benchmark -v
+python3 -m unittest discover -s extension -v
+python3 extension/analyze.py
+python3 extension/write_results.py
+python3 extension/write_web.py
+\end{verbatim}
+Las pruebas offline no generan puntuaciones del modelo. El analizador comprueba las 216 ejecuciones, identidad de tareas, orden, copias congeladas, instrucciones cargadas y consumo por llamada. El generador escribe las secciones numéricas; las conclusiones editoriales se conservan aparte. Compilar dos veces cada \texttt{article.tex} desde \texttt{paper-v2/es} y \texttt{paper-v2/en} con pdfLaTeX.
+
+Una nueva réplica real requiere una clave autorizada y tiene coste de API. Utilizar siempre otra carpeta de salida y seguir \texttt{extension/README.md}; no sobrescribir la decisión de política ni las trazas publicadas. El modelo es un alias: una réplica posterior no garantiza respuestas o tiempos idénticos.
+
+La integridad del paquete v2 se comprueba con \texttt{ARTIFACTS-v2.sha256}; los archivos descargables tienen además un manifiesto \texttt{SHA256SUMS.txt}. Las trazas registran datos públicos sintéticos, respuestas visibles y uso informado, nunca encabezados de autorización.

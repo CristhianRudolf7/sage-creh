@@ -1,0 +1,42 @@
+\section{Cómo elegir una arquitectura de subagentes}
+\input{takeaway.tex}
+
+\subsection{Un agente maestro con delegación opcional}
+Un coordinador adaptativo puede elegir entre ejecución directa y delegación. El maestro interpreta la petición, mantiene el objetivo activo e integra los resultados. Delegar es una operación disponible, no una etapa obligatoria para cada mensaje. Esta arquitectura condicional es una recomendación derivada de los intercambios observados; su política de enrutamiento no se entrenó ni evaluó aquí.
+
+Para dos trabajadores en paralelo, una aproximación de la latencia es
+\begin{equation}
+W_{\mathrm{equipo}}\approx W_{\mathrm{plan}}+\max(W_1,W_2)+W_{\mathrm{integracion}},
+\end{equation}
+mientras los tokens se suman entre planificador, ambos trabajadores e integrador. La concurrencia solo acorta la parte solapada de la ruta que determina la espera. Una decisión útil debe considerar trabajo separable, traspasos necesarios y duración esperada, además de la existencia de subtareas. Una acción directa pequeña puede no ofrecer trabajo suficiente para compensar la coordinación.
+
+La primera implementación podría permitir un nivel de delegación y dos trabajadores simultáneos, con techo configurable. Son valores para un diseño inicial manejable, no un óptimo demostrado. Aumentar el equipo, incorporar negociación entre pares o mezclar tamaños de modelo requiere mediciones controladas adicionales.
+
+\subsection{Asignación de skills y contexto}
+El maestro debería descubrir el catálogo completo de metadatos y los trabajadores cargar inicialmente las instrucciones pertinentes a su encargo. Cada trabajador podría solicitar más recursos permitidos si el paquete inicial resulta insuficiente. Se mantiene la capacidad de descubrir funcionalidades sin copiar todas las instrucciones en cada petición. La selección por etiqueta del experimento es más sencilla que el enrutamiento real; su ahorro no garantiza el de un selector desplegado.
+
+Un traspaso práctico puede incluir \texttt{task\_id}, \texttt{parent\_task\_id}, objetivo, referencias de entrada, versiones de skills, herramientas permitidas, dependencias y forma del resultado. La respuesta debería separar trabajo completado, artefactos, hechos sin resolver y bloqueos. Estos campos organizan ejecución y auditoría; no requieren otra llamada al modelo para reformular una prueba formal por cada acción.
+
+Los trabajadores experimentales recibieron el original completo para igualar acceso a evidencia. El contexto específico de producción sería un cambio posterior: suministrar evidencia de la tarea e instrucciones recientes relevantes, con referencias recuperables para lo omitido. Se debe medir tanto reducción de contexto como fallos por información ausente. Los resultados actuales no demuestran que un contexto menor siempre sea suficiente.
+
+\subsection{Responsabilidades del motor}
+Los trabajadores pueden programarse como tareas asíncronas que comparten clientes de proveedores y conexiones de almacenamiento. Un proceso es necesario cuando una herramienta lo requiere. Así se evita equiparar cada agente con un proceso completo del sistema operativo, pero este estudio no midió memoria del host ni afirma una reducción de RAM.
+
+El planificador debe limitar concurrencia, propagar cancelación y conservar dependencias. Un maestro que espera hijos no debe ocupar el único puesto de ejecución que ellos necesitan; la admisión de coordinadores y trabajadores debe ser compatible. Los permisos de un trabajador no pueden superar los del padre y las escrituras en conflicto requieren coordinación.
+
+El coordinador puede ofrecer delegación, estado, comunicación y cancelación mediante una interfaz pequeña del motor. Escalar las decisiones sin resolver al coordinador conserva un límite claro de responsabilidad. Los resultados tipados de herramientas y el manejo ordinario de errores siguen siendo responsabilidades del motor. El crítico modelo estudiado en la configuración reflexiva es cómputo adicional opcional cuyo valor debe demostrarse para el trabajo concreto.
+
+\section{Límites, reproducibilidad y próximo experimento}
+Las tareas son pocas, sintéticas y diseñadas para este estudio. Las entradas breves y completas favorecen resolver directamente y no ejercitan recuperación de documentos, terminal, cambios de código en varios archivos ni recuperación prolongada ante fallos. Solo se utilizó un modelo y esfuerzo, con dos repeticiones por instancia. La caché del proveedor, la planificación de solicitudes y la red del día afectan la latencia. Igualar límites máximos no equivale a igualar cómputo consumido.
+
+La sensibilidad posterior al formato SQL permite interpretar los errores principales, pero no es otro objetivo prerregistrado. Solo cambia el envoltorio de una cadena existente y conserva las puntuaciones estrictas originales. No corrige lógica SQL, contenido ni fallos de infraestructura. Su interpretación debe mantenerse separada del análisis principal fijado.
+
+El paquete entregado incluye generadores, prompts exactos, diez skills, evaluadores, protocolo local, hashes, orden aleatorio, respuestas visibles, consumo, marcas temporales, tablas CSV/XLSX y ambas versiones LaTeX. La auditoría comprueba bloques completos y reconcilia tokens por llamada y ejecución. Un registro de enmiendas editoriales documenta los cambios de redacción de los protocolos posteriores a la evaluación, sin sustituir hashes históricos ni modificar la configuración experimental. Se excluyen credenciales y razonamiento privado. El alias del modelo puede evolucionar: se reproduce el método y análisis registrado, no un servicio remoto determinista.
+
+El siguiente experimento debería reservar tareas reales con acciones externas, contextos extensos, dependencias explícitas y escrituras incompatibles; incorporar más modelos y comparar delegación adaptativa con ejecución directa a presupuestos equivalentes. También debería variar por separado ámbito del contexto, descubrimiento de skills y tamaño del equipo. Este estudio aporta una medición inicial reproducible, no evidencia de que un equipo fijo sea universalmente mejor.
+
+\section{Conclusión}
+La arquitectura debe elegirse considerando corrección entregada, inferencia total y espera real conjuntamente. La comparación hace visible el coste de coordinar y muestra por qué se debe distinguir cumplimiento de formato y calidad de la solución. Para las tareas breves medidas, la ejecución directa es la referencia más económica. Entre los patrones con subagentes, la coordinación reflexiva consume menos tokens en promedio y la paralela presenta menor latencia media. No se establece un ganador universal; la delegación adaptativa con contexto específico sigue siendo una hipótesis que debe evaluarse en distintas cargas de trabajo.
+
+\smallskip
+\textbf{Disponibilidad y estado.} El artículo bilingüe y el paquete experimental están disponibles en \href{https://crehlabs.com/investigacion/subagentes-arquitecturas-tokens-tiempo-2026/}{la página de investigación de CREH Labs}. Es un preprint exploratorio sin revisión por pares. El benchmark se ejecutó en un arnés de investigación independiente y evalúa patrones acotados de coordinación.

@@ -1,0 +1,10 @@
+{
+  "finished_at": "2026-09-13T13:09:04.273452+00:00",
+  "source_sha256": {
+    "benchmark/runner.py": "56ab3cb344f912a60acff5567607a5f5d7bfe61eb30946fb8dd319b3fe185fe5",
+    "benchmark/tasks.py": "4c53ce009b0949fea3a624d0b88ade690025727c53fadbdd79e35dfbafecc9ad",
+    "benchmark/test_benchmark.py": "da94f05abb01712f4ad1c9a9ef9622a974dba8ec4deafc0230958b6fa0140fea",
+    "protocol.en.md": "6ab043f3060fd9ca245e65972d3d519e0b6cea0e45cd17cb2f932ad1bc3307cf",
+    "protocol.es.md": "8278442e64be1b9e1aef729923718209606db88b04d3edd74b96eaabddc19f44"
+  }
+}

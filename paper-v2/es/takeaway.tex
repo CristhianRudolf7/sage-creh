@@ -1,0 +1,50 @@
+SAGE-CREH obtuvo el mayor cumplimiento estricto de la comparación principal:
+23/24 (95.8\%), con 1765 tokens y 7.34 segundos medios. Frente a los cuatro
+patrones originales redujo tokens un 47.2\% respecto al secuencial, 49.3\% al
+paralelo, 61.1\% al jerárquico y 30.2\% al reflexivo. Son diferencias observadas;
+los intervalos de diferencias de acierto estricto incluyen cero. La ventaja media
+de tiempo frente al paralelo fue de solo 0.35 segundos, con intervalo que incluye
+cero; tampoco se establece una ventaja de latencia frente al reflexivo.
+
+La conclusión depende del contrato de salida. Con SQL normalizado, secuencial y
+reflexivo lograron 24/24; SAGE y el agente único original, 23/24. Este último
+consumió 1160 tokens y 4.62 segundos medios, menos que SAGE. En el frente de Pareto
+de los seis diseños principales aparecen agente único y SAGE con la métrica
+estricta; al usar la secundaria aparecen agente único y reflexivo. Son fronteras
+de puntos estimados, no pruebas de dominancia poblacional. SAGE no es, por tanto,
+la mejor elección bajo todas las definiciones de éxito.
+
+El control SAGE sin delegación logró 21/24 con 1110 tokens: añadir coordinación
+elevó el consumo un 59.1\% y produjo dos aciertos más en promedio de la muestra,
+sin una diferencia de cumplimiento concluyente. Sus dos fallos SQL contienen
+una clave extra \texttt{uncertainties} en el sobre final; esa forma no está cubierta
+por la normalización secundaria predefinida, que solo envuelve cadenas SQL.
+Por ello, tampoco esta columna separa todo posible error de formato del contenido.
+
+La inspección de las propias trazas de SAGE identifica cinco mejoras frente a su
+primer candidato: tres revisiones SQL de contrato y dos arbitrajes en dependencias
+y selección. No hubo regresiones estrictas tras revisión. Se aceptaron trece
+respuestas directas y cinco acuerdos paralelos sin integrador; hubo tres arbitrajes
+y tres revisiones selectivas, para 38 llamadas en 24 tareas. Esto documenta
+mecanismos concretos, sin convertir cada corrección de contrato en razonamiento
+multiagente superior.
+
+El único fallo final de SAGE ocurrió en T02, primera repetición: todas las sumas
+monetarias coincidían, pero se devolvieron siete eventos cuando correspondían
+ocho. El contrato era válido, no se declararon dudas y la vía directa lo aceptó.
+Este caso muestra exactamente qué no detecta la compuerta de formato.
+
+Seleccionar instrucciones redujo tokens un 40.5\% respecto a SAGE con diez skills
+(1765 frente a 2966). No redujo el tiempo observado: 7.34 frente a 6.38 segundos,
+con diferencia incierta. Las respuestas también cambiaron las rutas: 38 frente
+a 34 llamadas. Esa ablación mide el efecto total de la carga bajo la misma
+política, no un grafo ejecutado idéntico. En la pareja jerárquica, ambos hicieron
+96 llamadas y cargar diez skills elevó tokens un 89.3\%, sin aumentar el total
+de aciertos normalizados (22/24 en ambos).
+
+Para este contrato estricto, SAGE es una alternativa adaptativa de consumo bajo
+frente a los cuatro equipos fijos. Si el sistema admite normalización del
+envoltorio SQL y prioriza el coste, los datos favorecen la referencia individual;
+si prioriza el cumplimiento normalizado observado, favorecen al reflexivo frente
+al secuencial por su menor consumo y tiempo medios. Esta decisión condicionada
+es más fiel a la evidencia que proclamar una arquitectura universalmente ganadora.

@@ -1,0 +1,7 @@
+**SAGE-CREH logró 23/24 aciertos estrictos (95,8%), con 1.765 tokens y 7,34 segundos medios por tarea.** Consumió un 47,2% menos tokens que la secuencial, un 49,3% menos que la paralela, un 61,1% menos que la jerárquica y un 30,2% menos que la reflexiva.
+
+Fue el mayor puntaje estricto observado, pero **no ganó con todos los criterios**. Al normalizar únicamente el envoltorio SQL, secuencial y reflexiva alcanzaron 24/24; SAGE y el agente único original, 23/24. El agente único necesitó menos recursos: 1.160 tokens y 4,62 segundos medios. La diferencia de latencia entre SAGE y la paralela fue pequeña e incierta.
+
+El control SAGE sin delegación obtuvo 21/24 con 1.110 tokens: coordinar agregó un 59,1% de tokens y dos aciertos en esta muestra. Dos fallos de ese control eran sobres JSON con una clave extra, no eliminada por la normalización SQL predefinida. En las propias trazas de SAGE, cinco primeros candidatos se corrigieron: tres por contrato SQL y dos mediante arbitraje en dependencias y selección. Su único fallo final fue contar siete eventos en vez de ocho en T02, aunque las sumas monetarias eran correctas.
+
+La lectura práctica es condicional: SAGE ofrece un buen compromiso para exigir respuestas estrictas con menos gasto que los equipos fijos. Si se permite normalizar SQL y prima el coste, esta muestra favorece al agente único; si prima el cumplimiento normalizado observado, la reflexiva resulta más económica y rápida que la secuencial. Los intervalos de diferencias de acierto no permiten proclamar superioridad general.

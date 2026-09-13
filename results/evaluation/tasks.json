@@ -1,0 +1,3295 @@
+[
+  {
+    "id": "T01",
+    "family": "ledger",
+    "public": {
+      "request": "Keep only the greatest revision per id, then sum posted USD events. Include all three projects. Return {totals_cents:{atlas:int,boreal:int,cedar:int}, total_cents:int, event_count:int}.",
+      "events": [
+        {
+          "id": "E11",
+          "revision": 1,
+          "project": "cedar",
+          "amount_cents": 2925,
+          "currency": "USD",
+          "status": "posted"
+        },
+        {
+          "id": "E15",
+          "revision": 2,
+          "project": "atlas",
+          "amount_cents": -1250,
+          "currency": "USD",
+          "status": "void"
+        },
+        {
+          "id": "E06",
+          "revision": 1,
+          "project": "atlas",
+          "amount_cents": 2800,
+          "currency": "USD",
+          "status": "posted"
+        },
+        {
+          "id": "E06",
+          "revision": 2,
+          "project": "atlas",
+          "amount_cents": 3175,
+          "currency": "USD",
+          "status": "posted"
+        },
+        {
+          "id": "E03",
+          "revision": 1,
+          "project": "cedar",
+          "amount_cents": -1475,
+          "currency": "USD",
+          "status": "posted"
+        },
+        {
+          "id": "E15",
+          "revision": 1,
+          "project": "atlas",
+          "amount_cents": -1625,
+          "currency": "USD",
+          "status": "pending"
+        },
+        {
+          "id": "E10",
+          "revision": 1,
+          "project": "atlas",
+          "amount_cents": -275,
+          "currency": "USD",
+          "status": "pending"
+        },
+        {
+          "id": "E12",
+          "revision": 2,
+          "project": "boreal",
+          "amount_cents": 1975,
+          "currency": "PEN",
+          "status": "posted"
+        },
+        {
+          "id": "E17",
+          "revision": 1,
+          "project": "atlas",
+          "amount_cents": -450,
+          "currency": "USD",
+          "status": "posted"
+        },
+        {
+          "id": "E02",
+          "revision": 1,
+          "project": "boreal",
+          "amount_cents": -850,
+          "currency": "USD",
+          "status": "posted"
+        },
+        {
+          "id": "E16",
+          "revision": 1,
+          "project": "boreal",
+          "amount_cents": 425,
+          "currency": "PEN",
+          "status": "posted"
+        },
+        {
+          "id": "E03",
+          "revision": 2,
+          "project": "cedar",
+          "amount_cents": -1100,
+          "currency": "USD",
+          "status": "void"
+        },
+        {
+          "id": "E01",
+          "revision": 1,
+          "project": "atlas",
+          "amount_cents": 3125,
+          "currency": "USD",
+          "status": "posted"
+        },
+        {
+          "id": "E12",
+          "revision": 1,
+          "project": "boreal",
+          "amount_cents": 1600,
+          "currency": "PEN",
+          "status": "posted"
+        },
+        {
+          "id": "E00",
+          "revision": 1,
+          "project": "atlas",
+          "amount_cents": 1250,
+          "currency": "PEN",
+          "status": "pending"
+        },
+        {
+          "id": "E00",
+          "revision": 2,
+          "project": "atlas",
+          "amount_cents": 1625,
+          "currency": "PEN",
+          "status": "posted"
+        },
+        {
+          "id": "E09",
+          "revision": 2,
+          "project": "cedar",
+          "amount_cents": -1000,
+          "currency": "USD",
+          "status": "void"
+        },
+        {
+          "id": "E13",
+          "revision": 1,
+          "project": "boreal",
+          "amount_cents": -450,
+          "currency": "USD",
+          "status": "posted"
+        },
+        {
+          "id": "E04",
+          "revision": 1,
+          "project": "atlas",
+          "amount_cents": 4325,
+          "currency": "PEN",
+          "status": "posted"
+        },
+        {
+          "id": "E05",
+          "revision": 1,
+          "project": "atlas",
+          "amount_cents": 1675,
+          "currency": "USD",
+          "status": "pending"
+        },
+        {
+          "id": "E14",
+          "revision": 1,
+          "project": "cedar",
+          "amount_cents": -1175,
+          "currency": "USD",
+          "status": "posted"
+        },
+        {
+          "id": "E08",
+          "revision": 1,
+          "project": "cedar",
+          "amount_cents": -1550,
+          "currency": "PEN",
+          "status": "posted"
+        },
+        {
+          "id": "E09",
+          "revision": 1,
+          "project": "cedar",
+          "amount_cents": -1375,
+          "currency": "USD",
+          "status": "posted"
+        },
+        {
+          "id": "E07",
+          "revision": 1,
+          "project": "atlas",
+          "amount_cents": -825,
+          "currency": "USD",
+          "status": "posted"
+        }
+      ]
+    },
+    "expected": {
+      "totals_cents": {
+        "atlas": 5025,
+        "boreal": -1300,
+        "cedar": 1750
+      },
+      "total_cents": 5475,
+      "event_count": 8
+    },
+    "sql_fixtures": null
+  },
+  {
+    "id": "T02",
+    "family": "ledger",
+    "public": {
+      "request": "Keep only the greatest revision per id, then sum posted USD events. Include all three projects. Return {totals_cents:{atlas:int,boreal:int,cedar:int}, total_cents:int, event_count:int}.",
+      "events": [
+        {
+          "id": "E03",
+          "revision": 1,
+          "project": "atlas",
+          "amount_cents": 1425,
+          "currency": "USD",
+          "status": "posted"
+        },
+        {
+          "id": "E09",
+          "revision": 1,
+          "project": "cedar",
+          "amount_cents": 4275,
+          "currency": "USD",
+          "status": "posted"
+        },
+        {
+          "id": "E15",
+          "revision": 1,
+          "project": "cedar",
+          "amount_cents": 3175,
+          "currency": "USD",
+          "status": "pending"
+        },
+        {
+          "id": "E06",
+          "revision": 2,
+          "project": "boreal",
+          "amount_cents": 1875,
+          "currency": "USD",
+          "status": "posted"
+        },
+        {
+          "id": "E15",
+          "revision": 2,
+          "project": "cedar",
+          "amount_cents": 3550,
+          "currency": "USD",
+          "status": "void"
+        },
+        {
+          "id": "E16",
+          "revision": 1,
+          "project": "atlas",
+          "amount_cents": 3600,
+          "currency": "PEN",
+          "status": "posted"
+        },
+        {
+          "id": "E13",
+          "revision": 1,
+          "project": "atlas",
+          "amount_cents": 1600,
+          "currency": "USD",
+          "status": "posted"
+        },
+        {
+          "id": "E12",
+          "revision": 2,
+          "project": "cedar",
+          "amount_cents": 3450,
+          "currency": "PEN",
+          "status": "posted"
+        },
+        {
+          "id": "E11",
+          "revision": 1,
+          "project": "cedar",
+          "amount_cents": -1750,
+          "currency": "USD",
+          "status": "posted"
+        },
+        {
+          "id": "E06",
+          "revision": 1,
+          "project": "boreal",
+          "amount_cents": 1500,
+          "currency": "USD",
+          "status": "posted"
+        },
+        {
+          "id": "E08",
+          "revision": 1,
+          "project": "atlas",
+          "amount_cents": 1575,
+          "currency": "PEN",
+          "status": "posted"
+        },
+        {
+          "id": "E09",
+          "revision": 2,
+          "project": "cedar",
+          "amount_cents": 4650,
+          "currency": "USD",
+          "status": "void"
+        },
+        {
+          "id": "E17",
+          "revision": 1,
+          "project": "boreal",
+          "amount_cents": 4350,
+          "currency": "USD",
+          "status": "posted"
+        },
+        {
+          "id": "E00",
+          "revision": 1,
+          "project": "atlas",
+          "amount_cents": 4175,
+          "currency": "PEN",
+          "status": "pending"
+        },
+        {
+          "id": "E05",
+          "revision": 1,
+          "project": "atlas",
+          "amount_cents": -1125,
+          "currency": "USD",
+          "status": "pending"
+        },
+        {
+          "id": "E03",
+          "revision": 2,
+          "project": "atlas",
+          "amount_cents": 1800,
+          "currency": "USD",
+          "status": "void"
+        },
+        {
+          "id": "E14",
+          "revision": 1,
+          "project": "atlas",
+          "amount_cents": 1350,
+          "currency": "USD",
+          "status": "posted"
+        },
+        {
+          "id": "E12",
+          "revision": 1,
+          "project": "cedar",
+          "amount_cents": 3075,
+          "currency": "PEN",
+          "status": "posted"
+        },
+        {
+          "id": "E00",
+          "revision": 2,
+          "project": "atlas",
+          "amount_cents": 4550,
+          "currency": "PEN",
+          "status": "posted"
+        },
+        {
+          "id": "E02",
+          "revision": 1,
+          "project": "boreal",
+          "amount_cents": 2700,
+          "currency": "USD",
+          "status": "posted"
+        },
+        {
+          "id": "E07",
+          "revision": 1,
+          "project": "boreal",
+          "amount_cents": 3625,
+          "currency": "USD",
+          "status": "posted"
+        },
+        {
+          "id": "E01",
+          "revision": 1,
+          "project": "atlas",
+          "amount_cents": -825,
+          "currency": "USD",
+          "status": "posted"
+        },
+        {
+          "id": "E10",
+          "revision": 1,
+          "project": "boreal",
+          "amount_cents": 600,
+          "currency": "USD",
+          "status": "pending"
+        },
+        {
+          "id": "E04",
+          "revision": 1,
+          "project": "atlas",
+          "amount_cents": 2850,
+          "currency": "PEN",
+          "status": "posted"
+        }
+      ]
+    },
+    "expected": {
+      "totals_cents": {
+        "atlas": 2125,
+        "boreal": 12550,
+        "cedar": -1750
+      },
+      "total_cents": 12925,
+      "event_count": 8
+    },
+    "sql_fixtures": null
+  },
+  {
+    "id": "T03",
+    "family": "schedule",
+    "public": {
+      "request": "Find the earliest common meeting on 2026-09-14 inside the organizer's 09:00–16:00 Lima window (UTC-05:00). Busy intervals are half-open. Use the fixed offsets supplied, no external calendar. Return {start_local:HH:MM,end_local:HH:MM}, or null if impossible.",
+      "duration_minutes": 45,
+      "participants": [
+        {
+          "name": "Lima",
+          "utc_offset_minutes": -300,
+          "busy_local": [
+            [
+              "12:00",
+              "12:45"
+            ],
+            [
+              "10:45",
+              "11:15"
+            ],
+            [
+              "12:00",
+              "13:00"
+            ]
+          ]
+        },
+        {
+          "name": "Lisbon",
+          "utc_offset_minutes": 60,
+          "busy_local": [
+            [
+              "17:15",
+              "18:15"
+            ],
+            [
+              "17:00",
+              "17:45"
+            ],
+            [
+              "19:30",
+              "20:00"
+            ]
+          ]
+        },
+        {
+          "name": "New York",
+          "utc_offset_minutes": -240,
+          "busy_local": [
+            [
+              "11:45",
+              "12:45"
+            ],
+            [
+              "10:00",
+              "10:45"
+            ],
+            [
+              "11:00",
+              "11:30"
+            ]
+          ]
+        }
+      ]
+    },
+    "expected": {
+      "start_local": "14:00",
+      "end_local": "14:45"
+    },
+    "sql_fixtures": null
+  },
+  {
+    "id": "T04",
+    "family": "schedule",
+    "public": {
+      "request": "Find the earliest common meeting on 2026-09-14 inside the organizer's 09:00–16:00 Lima window (UTC-05:00). Busy intervals are half-open. Use the fixed offsets supplied, no external calendar. Return {start_local:HH:MM,end_local:HH:MM}, or null if impossible.",
+      "duration_minutes": 60,
+      "participants": [
+        {
+          "name": "Lima",
+          "utc_offset_minutes": -300,
+          "busy_local": [
+            [
+              "14:00",
+              "14:30"
+            ],
+            [
+              "09:00",
+              "10:00"
+            ],
+            [
+              "11:00",
+              "11:30"
+            ]
+          ]
+        },
+        {
+          "name": "Lisbon",
+          "utc_offset_minutes": 60,
+          "busy_local": [
+            [
+              "16:45",
+              "17:15"
+            ],
+            [
+              "15:45",
+              "16:45"
+            ],
+            [
+              "19:15",
+              "19:45"
+            ]
+          ]
+        },
+        {
+          "name": "New York",
+          "utc_offset_minutes": -240,
+          "busy_local": [
+            [
+              "14:30",
+              "15:15"
+            ],
+            [
+              "10:15",
+              "10:45"
+            ],
+            [
+              "10:30",
+              "11:00"
+            ]
+          ]
+        }
+      ]
+    },
+    "expected": {
+      "start_local": "11:30",
+      "end_local": "12:30"
+    },
+    "sql_fixtures": null
+  },
+  {
+    "id": "T05",
+    "family": "dependencies",
+    "public": {
+      "request": "With unlimited workers and non-preemptive tasks, compute earliest starts and overall makespan from time zero. Return {earliest_start:{id:int,...},makespan:int,critical_path:[id,...]}. Break critical-path ties using the lexicographically smallest full id sequence.",
+      "tasks": [
+        {
+          "id": "H",
+          "duration": 11,
+          "predecessors": [
+            "C"
+          ]
+        },
+        {
+          "id": "G",
+          "duration": 12,
+          "predecessors": [
+            "A",
+            "D"
+          ]
+        },
+        {
+          "id": "I",
+          "duration": 12,
+          "predecessors": [
+            "D",
+            "F"
+          ]
+        },
+        {
+          "id": "F",
+          "duration": 10,
+          "predecessors": [
+            "A"
+          ]
+        },
+        {
+          "id": "K",
+          "duration": 2,
+          "predecessors": [
+            "H"
+          ]
+        },
+        {
+          "id": "D",
+          "duration": 8,
+          "predecessors": [
+            "A",
+            "B",
+            "C"
+          ]
+        },
+        {
+          "id": "E",
+          "duration": 2,
+          "predecessors": [
+            "C",
+            "D"
+          ]
+        },
+        {
+          "id": "C",
+          "duration": 8,
+          "predecessors": [
+            "B"
+          ]
+        },
+        {
+          "id": "J",
+          "duration": 9,
+          "predecessors": [
+            "A"
+          ]
+        },
+        {
+          "id": "B",
+          "duration": 5,
+          "predecessors": [
+            "A"
+          ]
+        },
+        {
+          "id": "A",
+          "duration": 5,
+          "predecessors": []
+        }
+      ]
+    },
+    "expected": {
+      "earliest_start": {
+        "A": 0,
+        "B": 5,
+        "C": 10,
+        "D": 18,
+        "E": 26,
+        "F": 5,
+        "G": 26,
+        "H": 18,
+        "I": 26,
+        "J": 5,
+        "K": 29
+      },
+      "makespan": 38,
+      "critical_path": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "G"
+      ]
+    },
+    "sql_fixtures": null
+  },
+  {
+    "id": "T06",
+    "family": "dependencies",
+    "public": {
+      "request": "With unlimited workers and non-preemptive tasks, compute earliest starts and overall makespan from time zero. Return {earliest_start:{id:int,...},makespan:int,critical_path:[id,...]}. Break critical-path ties using the lexicographically smallest full id sequence.",
+      "tasks": [
+        {
+          "id": "F",
+          "duration": 3,
+          "predecessors": [
+            "B"
+          ]
+        },
+        {
+          "id": "D",
+          "duration": 9,
+          "predecessors": [
+            "A",
+            "B"
+          ]
+        },
+        {
+          "id": "E",
+          "duration": 9,
+          "predecessors": [
+            "A",
+            "B",
+            "D"
+          ]
+        },
+        {
+          "id": "B",
+          "duration": 7,
+          "predecessors": [
+            "A"
+          ]
+        },
+        {
+          "id": "K",
+          "duration": 4,
+          "predecessors": [
+            "C",
+            "F",
+            "G"
+          ]
+        },
+        {
+          "id": "A",
+          "duration": 6,
+          "predecessors": []
+        },
+        {
+          "id": "H",
+          "duration": 6,
+          "predecessors": [
+            "F"
+          ]
+        },
+        {
+          "id": "C",
+          "duration": 4,
+          "predecessors": [
+            "A",
+            "B"
+          ]
+        },
+        {
+          "id": "J",
+          "duration": 3,
+          "predecessors": [
+            "G"
+          ]
+        },
+        {
+          "id": "I",
+          "duration": 3,
+          "predecessors": [
+            "D",
+            "H"
+          ]
+        },
+        {
+          "id": "G",
+          "duration": 9,
+          "predecessors": [
+            "B"
+          ]
+        }
+      ]
+    },
+    "expected": {
+      "earliest_start": {
+        "A": 0,
+        "B": 6,
+        "C": 13,
+        "D": 13,
+        "E": 22,
+        "F": 13,
+        "G": 13,
+        "H": 16,
+        "I": 22,
+        "J": 22,
+        "K": 22
+      },
+      "makespan": 31,
+      "critical_path": [
+        "A",
+        "B",
+        "D",
+        "E"
+      ]
+    },
+    "sql_fixtures": null
+  },
+  {
+    "id": "T07",
+    "family": "selection",
+    "public": {
+      "request": "Select exactly four items with total cost at most the budget, covering all three capabilities. Enforce forbidden pairs and directed prerequisites. Maximize total value, then minimize cost, then choose lexicographically smallest sorted ids. Return {ids:[...],total_cost:int,total_value:int}.",
+      "budget": 34,
+      "items": [
+        {
+          "id": "A",
+          "cost": 11,
+          "value": 13,
+          "capabilities": [
+            "storage"
+          ]
+        },
+        {
+          "id": "B",
+          "cost": 12,
+          "value": 14,
+          "capabilities": [
+            "compute"
+          ]
+        },
+        {
+          "id": "C",
+          "cost": 9,
+          "value": 17,
+          "capabilities": [
+            "network"
+          ]
+        },
+        {
+          "id": "D",
+          "cost": 9,
+          "value": 30,
+          "capabilities": [
+            "storage"
+          ]
+        },
+        {
+          "id": "E",
+          "cost": 4,
+          "value": 23,
+          "capabilities": [
+            "compute",
+            "network"
+          ]
+        },
+        {
+          "id": "F",
+          "cost": 9,
+          "value": 19,
+          "capabilities": [
+            "network"
+          ]
+        },
+        {
+          "id": "G",
+          "cost": 5,
+          "value": 20,
+          "capabilities": [
+            "storage"
+          ]
+        },
+        {
+          "id": "H",
+          "cost": 11,
+          "value": 18,
+          "capabilities": [
+            "compute"
+          ]
+        },
+        {
+          "id": "I",
+          "cost": 6,
+          "value": 18,
+          "capabilities": [
+            "network"
+          ]
+        },
+        {
+          "id": "J",
+          "cost": 14,
+          "value": 8,
+          "capabilities": [
+            "storage"
+          ]
+        },
+        {
+          "id": "K",
+          "cost": 12,
+          "value": 30,
+          "capabilities": [
+            "compute"
+          ]
+        },
+        {
+          "id": "L",
+          "cost": 5,
+          "value": 28,
+          "capabilities": [
+            "network"
+          ]
+        }
+      ],
+      "forbidden_pairs": [
+        [
+          "B",
+          "E"
+        ],
+        [
+          "H",
+          "K"
+        ]
+      ],
+      "prerequisites": {
+        "J": "A",
+        "L": "D"
+      }
+    },
+    "expected": {
+      "ids": [
+        "D",
+        "E",
+        "K",
+        "L"
+      ],
+      "total_cost": 30,
+      "total_value": 111
+    },
+    "sql_fixtures": null
+  },
+  {
+    "id": "T08",
+    "family": "selection",
+    "public": {
+      "request": "Select exactly four items with total cost at most the budget, covering all three capabilities. Enforce forbidden pairs and directed prerequisites. Maximize total value, then minimize cost, then choose lexicographically smallest sorted ids. Return {ids:[...],total_cost:int,total_value:int}.",
+      "budget": 34,
+      "items": [
+        {
+          "id": "A",
+          "cost": 13,
+          "value": 13,
+          "capabilities": [
+            "storage"
+          ]
+        },
+        {
+          "id": "B",
+          "cost": 5,
+          "value": 15,
+          "capabilities": [
+            "compute"
+          ]
+        },
+        {
+          "id": "C",
+          "cost": 11,
+          "value": 17,
+          "capabilities": [
+            "network"
+          ]
+        },
+        {
+          "id": "D",
+          "cost": 14,
+          "value": 19,
+          "capabilities": [
+            "storage"
+          ]
+        },
+        {
+          "id": "E",
+          "cost": 6,
+          "value": 24,
+          "capabilities": [
+            "compute",
+            "network"
+          ]
+        },
+        {
+          "id": "F",
+          "cost": 6,
+          "value": 13,
+          "capabilities": [
+            "network"
+          ]
+        },
+        {
+          "id": "G",
+          "cost": 4,
+          "value": 16,
+          "capabilities": [
+            "storage"
+          ]
+        },
+        {
+          "id": "H",
+          "cost": 14,
+          "value": 13,
+          "capabilities": [
+            "compute"
+          ]
+        },
+        {
+          "id": "I",
+          "cost": 5,
+          "value": 8,
+          "capabilities": [
+            "network"
+          ]
+        },
+        {
+          "id": "J",
+          "cost": 11,
+          "value": 23,
+          "capabilities": [
+            "storage"
+          ]
+        },
+        {
+          "id": "K",
+          "cost": 12,
+          "value": 8,
+          "capabilities": [
+            "compute"
+          ]
+        },
+        {
+          "id": "L",
+          "cost": 9,
+          "value": 26,
+          "capabilities": [
+            "network"
+          ]
+        }
+      ],
+      "forbidden_pairs": [
+        [
+          "B",
+          "E"
+        ],
+        [
+          "H",
+          "K"
+        ]
+      ],
+      "prerequisites": {
+        "J": "A",
+        "L": "D"
+      }
+    },
+    "expected": {
+      "ids": [
+        "D",
+        "E",
+        "G",
+        "L"
+      ],
+      "total_cost": 33,
+      "total_value": 85
+    },
+    "sql_fixtures": null
+  },
+  {
+    "id": "T09",
+    "family": "memory",
+    "public": {
+      "request": "Process events by ascending seq. set confirms a scoped value; delete removes only that scoped key; candidate never changes durable memory. Then overlay atlas on global. Return the effective atlas snapshot {key:{value:string,source_seq:int},...}, omitting absent keys. A project deletion reveals a surviving global value. Ignore boreal when constructing the atlas view.",
+      "events": [
+        {
+          "seq": 13,
+          "scope": "global",
+          "op": "set",
+          "key": "timezone",
+          "value": "option_b"
+        },
+        {
+          "seq": 9,
+          "scope": "global",
+          "op": "set",
+          "key": "theme",
+          "value": "option_a"
+        },
+        {
+          "seq": 23,
+          "scope": "atlas",
+          "op": "set",
+          "key": "tone",
+          "value": "option_b"
+        },
+        {
+          "seq": 8,
+          "scope": "atlas",
+          "op": "set",
+          "key": "language",
+          "value": "option_c"
+        },
+        {
+          "seq": 22,
+          "scope": "global",
+          "op": "set",
+          "key": "timezone",
+          "value": "option_b"
+        },
+        {
+          "seq": 5,
+          "scope": "global",
+          "op": "set",
+          "key": "theme",
+          "value": "option_a"
+        },
+        {
+          "seq": 3,
+          "scope": "global",
+          "op": "set",
+          "key": "language",
+          "value": "option_c"
+        },
+        {
+          "seq": 4,
+          "scope": "global",
+          "op": "set",
+          "key": "tone",
+          "value": "option_b"
+        },
+        {
+          "seq": 6,
+          "scope": "atlas",
+          "op": "delete",
+          "key": "timezone",
+          "value": "option_c"
+        },
+        {
+          "seq": 2,
+          "scope": "global",
+          "op": "candidate",
+          "key": "theme",
+          "value": "option_b"
+        },
+        {
+          "seq": 12,
+          "scope": "atlas",
+          "op": "set",
+          "key": "language",
+          "value": "option_a"
+        },
+        {
+          "seq": 19,
+          "scope": "global",
+          "op": "set",
+          "key": "tone",
+          "value": "option_a"
+        },
+        {
+          "seq": 20,
+          "scope": "atlas",
+          "op": "candidate",
+          "key": "language",
+          "value": "option_b"
+        },
+        {
+          "seq": 21,
+          "scope": "boreal",
+          "op": "set",
+          "key": "theme",
+          "value": "option_c"
+        },
+        {
+          "seq": 11,
+          "scope": "boreal",
+          "op": "set",
+          "key": "tone",
+          "value": "option_a"
+        },
+        {
+          "seq": 17,
+          "scope": "global",
+          "op": "delete",
+          "key": "tone",
+          "value": "option_c"
+        },
+        {
+          "seq": 10,
+          "scope": "global",
+          "op": "candidate",
+          "key": "tone",
+          "value": "option_b"
+        },
+        {
+          "seq": 15,
+          "scope": "global",
+          "op": "set",
+          "key": "theme",
+          "value": "option_a"
+        },
+        {
+          "seq": 7,
+          "scope": "boreal",
+          "op": "set",
+          "key": "theme",
+          "value": "option_b"
+        },
+        {
+          "seq": 14,
+          "scope": "atlas",
+          "op": "candidate",
+          "key": "tone",
+          "value": "option_b"
+        },
+        {
+          "seq": 1,
+          "scope": "atlas",
+          "op": "set",
+          "key": "language",
+          "value": "option_b"
+        },
+        {
+          "seq": 24,
+          "scope": "atlas",
+          "op": "set",
+          "key": "tone",
+          "value": "option_c"
+        },
+        {
+          "seq": 18,
+          "scope": "boreal",
+          "op": "candidate",
+          "key": "language",
+          "value": "option_a"
+        },
+        {
+          "seq": 16,
+          "scope": "boreal",
+          "op": "set",
+          "key": "tone",
+          "value": "option_b"
+        }
+      ]
+    },
+    "expected": {
+      "language": {
+        "value": "option_a",
+        "source_seq": 12
+      },
+      "theme": {
+        "value": "option_a",
+        "source_seq": 15
+      },
+      "timezone": {
+        "value": "option_b",
+        "source_seq": 22
+      },
+      "tone": {
+        "value": "option_c",
+        "source_seq": 24
+      }
+    },
+    "sql_fixtures": null
+  },
+  {
+    "id": "T10",
+    "family": "memory",
+    "public": {
+      "request": "Process events by ascending seq. set confirms a scoped value; delete removes only that scoped key; candidate never changes durable memory. Then overlay atlas on global. Return the effective atlas snapshot {key:{value:string,source_seq:int},...}, omitting absent keys. A project deletion reveals a surviving global value. Ignore boreal when constructing the atlas view.",
+      "events": [
+        {
+          "seq": 4,
+          "scope": "boreal",
+          "op": "set",
+          "key": "timezone",
+          "value": "option_a"
+        },
+        {
+          "seq": 24,
+          "scope": "global",
+          "op": "delete",
+          "key": "theme",
+          "value": "option_a"
+        },
+        {
+          "seq": 13,
+          "scope": "global",
+          "op": "set",
+          "key": "language",
+          "value": "option_b"
+        },
+        {
+          "seq": 18,
+          "scope": "boreal",
+          "op": "set",
+          "key": "timezone",
+          "value": "option_b"
+        },
+        {
+          "seq": 14,
+          "scope": "global",
+          "op": "candidate",
+          "key": "theme",
+          "value": "option_b"
+        },
+        {
+          "seq": 21,
+          "scope": "boreal",
+          "op": "set",
+          "key": "theme",
+          "value": "option_a"
+        },
+        {
+          "seq": 9,
+          "scope": "atlas",
+          "op": "candidate",
+          "key": "theme",
+          "value": "option_b"
+        },
+        {
+          "seq": 22,
+          "scope": "atlas",
+          "op": "candidate",
+          "key": "language",
+          "value": "option_a"
+        },
+        {
+          "seq": 5,
+          "scope": "boreal",
+          "op": "set",
+          "key": "theme",
+          "value": "option_b"
+        },
+        {
+          "seq": 6,
+          "scope": "global",
+          "op": "set",
+          "key": "tone",
+          "value": "option_a"
+        },
+        {
+          "seq": 10,
+          "scope": "boreal",
+          "op": "set",
+          "key": "theme",
+          "value": "option_b"
+        },
+        {
+          "seq": 2,
+          "scope": "boreal",
+          "op": "set",
+          "key": "tone",
+          "value": "option_b"
+        },
+        {
+          "seq": 20,
+          "scope": "atlas",
+          "op": "delete",
+          "key": "theme",
+          "value": "option_a"
+        },
+        {
+          "seq": 3,
+          "scope": "boreal",
+          "op": "delete",
+          "key": "theme",
+          "value": "option_c"
+        },
+        {
+          "seq": 23,
+          "scope": "boreal",
+          "op": "set",
+          "key": "language",
+          "value": "option_b"
+        },
+        {
+          "seq": 16,
+          "scope": "boreal",
+          "op": "set",
+          "key": "timezone",
+          "value": "option_a"
+        },
+        {
+          "seq": 17,
+          "scope": "global",
+          "op": "candidate",
+          "key": "timezone",
+          "value": "option_c"
+        },
+        {
+          "seq": 1,
+          "scope": "global",
+          "op": "candidate",
+          "key": "theme",
+          "value": "option_b"
+        },
+        {
+          "seq": 7,
+          "scope": "boreal",
+          "op": "set",
+          "key": "language",
+          "value": "option_b"
+        },
+        {
+          "seq": 19,
+          "scope": "atlas",
+          "op": "set",
+          "key": "tone",
+          "value": "option_c"
+        },
+        {
+          "seq": 12,
+          "scope": "atlas",
+          "op": "candidate",
+          "key": "theme",
+          "value": "option_a"
+        },
+        {
+          "seq": 8,
+          "scope": "atlas",
+          "op": "set",
+          "key": "tone",
+          "value": "option_a"
+        },
+        {
+          "seq": 15,
+          "scope": "global",
+          "op": "candidate",
+          "key": "timezone",
+          "value": "option_a"
+        },
+        {
+          "seq": 11,
+          "scope": "atlas",
+          "op": "candidate",
+          "key": "tone",
+          "value": "option_a"
+        }
+      ]
+    },
+    "expected": {
+      "tone": {
+        "value": "option_c",
+        "source_seq": 19
+      },
+      "language": {
+        "value": "option_b",
+        "source_seq": 13
+      }
+    },
+    "sql_fixtures": null
+  },
+  {
+    "id": "T11",
+    "family": "sql",
+    "public": {
+      "request": "Write one read-only SQLite query. Include every customer ordered by id. Return columns customer_id, paid_order_count, net_cents. Count orders with status='paid' only. Net is paid order amounts minus all refunds attached to those paid orders; refunds on non-paid orders do not count. Include zero customers. Return {sql:string}.",
+      "schema": "CREATE TABLE customers(id INTEGER PRIMARY KEY, name TEXT); CREATE TABLE orders(id INTEGER PRIMARY KEY, customer_id INTEGER, status TEXT, amount_cents INTEGER); CREATE TABLE refunds(id INTEGER PRIMARY KEY, order_id INTEGER, amount_cents INTEGER);"
+    },
+    "expected": null,
+    "sql_fixtures": [
+      {
+        "tables": {
+          "customers": [
+            [
+              1,
+              "customer_1"
+            ],
+            [
+              2,
+              "customer_2"
+            ],
+            [
+              3,
+              "customer_3"
+            ],
+            [
+              4,
+              "customer_4"
+            ],
+            [
+              5,
+              "customer_5"
+            ],
+            [
+              6,
+              "customer_6"
+            ]
+          ],
+          "orders": [
+            [
+              1,
+              2,
+              "paid",
+              1700
+            ],
+            [
+              2,
+              5,
+              "paid",
+              600
+            ],
+            [
+              3,
+              2,
+              "pending",
+              800
+            ],
+            [
+              4,
+              5,
+              "paid",
+              900
+            ],
+            [
+              5,
+              4,
+              "paid",
+              1800
+            ],
+            [
+              6,
+              4,
+              "pending",
+              1800
+            ],
+            [
+              7,
+              5,
+              "paid",
+              1100
+            ],
+            [
+              8,
+              5,
+              "paid",
+              1200
+            ],
+            [
+              9,
+              4,
+              "pending",
+              900
+            ],
+            [
+              10,
+              4,
+              "paid",
+              100
+            ],
+            [
+              11,
+              1,
+              "paid",
+              100
+            ],
+            [
+              12,
+              5,
+              "pending",
+              900
+            ],
+            [
+              13,
+              1,
+              "paid",
+              1600
+            ],
+            [
+              14,
+              2,
+              "paid",
+              1200
+            ],
+            [
+              15,
+              5,
+              "pending",
+              1000
+            ],
+            [
+              16,
+              3,
+              "paid",
+              1500
+            ]
+          ],
+          "refunds": [
+            [
+              1,
+              7,
+              50
+            ],
+            [
+              2,
+              15,
+              50
+            ],
+            [
+              3,
+              16,
+              50
+            ],
+            [
+              4,
+              2,
+              50
+            ],
+            [
+              5,
+              4,
+              50
+            ],
+            [
+              6,
+              15,
+              50
+            ],
+            [
+              7,
+              14,
+              100
+            ],
+            [
+              8,
+              7,
+              100
+            ],
+            [
+              9,
+              4,
+              100
+            ],
+            [
+              10,
+              6,
+              150
+            ],
+            [
+              11,
+              12,
+              100
+            ],
+            [
+              12,
+              16,
+              50
+            ],
+            [
+              13,
+              15,
+              150
+            ],
+            [
+              14,
+              1,
+              100
+            ]
+          ]
+        },
+        "expected": [
+          [
+            1,
+            2,
+            1700
+          ],
+          [
+            2,
+            2,
+            2700
+          ],
+          [
+            3,
+            1,
+            1400
+          ],
+          [
+            4,
+            2,
+            1900
+          ],
+          [
+            5,
+            4,
+            3450
+          ],
+          [
+            6,
+            0,
+            0
+          ]
+        ]
+      },
+      {
+        "tables": {
+          "customers": [
+            [
+              1,
+              "customer_1"
+            ],
+            [
+              2,
+              "customer_2"
+            ],
+            [
+              3,
+              "customer_3"
+            ],
+            [
+              4,
+              "customer_4"
+            ],
+            [
+              5,
+              "customer_5"
+            ],
+            [
+              6,
+              "customer_6"
+            ]
+          ],
+          "orders": [
+            [
+              1,
+              3,
+              "paid",
+              400
+            ],
+            [
+              2,
+              5,
+              "paid",
+              1600
+            ],
+            [
+              3,
+              5,
+              "pending",
+              600
+            ],
+            [
+              4,
+              4,
+              "paid",
+              1000
+            ],
+            [
+              5,
+              5,
+              "paid",
+              300
+            ],
+            [
+              6,
+              4,
+              "pending",
+              1300
+            ],
+            [
+              7,
+              5,
+              "paid",
+              1700
+            ],
+            [
+              8,
+              2,
+              "paid",
+              1500
+            ],
+            [
+              9,
+              1,
+              "pending",
+              100
+            ],
+            [
+              10,
+              3,
+              "paid",
+              1400
+            ],
+            [
+              11,
+              1,
+              "paid",
+              1400
+            ],
+            [
+              12,
+              3,
+              "pending",
+              1800
+            ],
+            [
+              13,
+              4,
+              "paid",
+              1600
+            ],
+            [
+              14,
+              5,
+              "paid",
+              1400
+            ],
+            [
+              15,
+              2,
+              "pending",
+              200
+            ],
+            [
+              16,
+              3,
+              "paid",
+              1900
+            ]
+          ],
+          "refunds": [
+            [
+              1,
+              7,
+              150
+            ],
+            [
+              2,
+              3,
+              100
+            ],
+            [
+              3,
+              12,
+              100
+            ],
+            [
+              4,
+              5,
+              50
+            ],
+            [
+              5,
+              1,
+              50
+            ],
+            [
+              6,
+              9,
+              100
+            ],
+            [
+              7,
+              2,
+              50
+            ],
+            [
+              8,
+              6,
+              150
+            ],
+            [
+              9,
+              14,
+              50
+            ],
+            [
+              10,
+              3,
+              150
+            ],
+            [
+              11,
+              3,
+              150
+            ],
+            [
+              12,
+              7,
+              50
+            ],
+            [
+              13,
+              5,
+              100
+            ],
+            [
+              14,
+              15,
+              100
+            ]
+          ]
+        },
+        "expected": [
+          [
+            1,
+            1,
+            1400
+          ],
+          [
+            2,
+            1,
+            1500
+          ],
+          [
+            3,
+            3,
+            3650
+          ],
+          [
+            4,
+            2,
+            2600
+          ],
+          [
+            5,
+            4,
+            4550
+          ],
+          [
+            6,
+            0,
+            0
+          ]
+        ]
+      },
+      {
+        "tables": {
+          "customers": [
+            [
+              1,
+              "customer_1"
+            ],
+            [
+              2,
+              "customer_2"
+            ],
+            [
+              3,
+              "customer_3"
+            ],
+            [
+              4,
+              "customer_4"
+            ],
+            [
+              5,
+              "customer_5"
+            ],
+            [
+              6,
+              "customer_6"
+            ]
+          ],
+          "orders": [
+            [
+              1,
+              2,
+              "paid",
+              1400
+            ],
+            [
+              2,
+              3,
+              "paid",
+              200
+            ],
+            [
+              3,
+              5,
+              "pending",
+              100
+            ],
+            [
+              4,
+              5,
+              "paid",
+              200
+            ],
+            [
+              5,
+              1,
+              "paid",
+              900
+            ],
+            [
+              6,
+              3,
+              "pending",
+              100
+            ],
+            [
+              7,
+              1,
+              "paid",
+              1500
+            ],
+            [
+              8,
+              4,
+              "paid",
+              400
+            ],
+            [
+              9,
+              3,
+              "pending",
+              800
+            ],
+            [
+              10,
+              3,
+              "paid",
+              600
+            ],
+            [
+              11,
+              3,
+              "paid",
+              1400
+            ],
+            [
+              12,
+              5,
+              "pending",
+              700
+            ],
+            [
+              13,
+              2,
+              "paid",
+              400
+            ],
+            [
+              14,
+              2,
+              "paid",
+              1900
+            ],
+            [
+              15,
+              5,
+              "pending",
+              500
+            ],
+            [
+              16,
+              1,
+              "paid",
+              500
+            ]
+          ],
+          "refunds": [
+            [
+              1,
+              4,
+              50
+            ],
+            [
+              2,
+              9,
+              150
+            ],
+            [
+              3,
+              3,
+              150
+            ],
+            [
+              4,
+              2,
+              100
+            ],
+            [
+              5,
+              3,
+              50
+            ],
+            [
+              6,
+              6,
+              50
+            ],
+            [
+              7,
+              5,
+              150
+            ],
+            [
+              8,
+              7,
+              100
+            ],
+            [
+              9,
+              3,
+              150
+            ],
+            [
+              10,
+              8,
+              50
+            ],
+            [
+              11,
+              5,
+              150
+            ],
+            [
+              12,
+              1,
+              50
+            ],
+            [
+              13,
+              16,
+              50
+            ],
+            [
+              14,
+              16,
+              50
+            ]
+          ]
+        },
+        "expected": [
+          [
+            1,
+            3,
+            2400
+          ],
+          [
+            2,
+            3,
+            3650
+          ],
+          [
+            3,
+            3,
+            2100
+          ],
+          [
+            4,
+            1,
+            350
+          ],
+          [
+            5,
+            1,
+            150
+          ],
+          [
+            6,
+            0,
+            0
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "T12",
+    "family": "sql",
+    "public": {
+      "request": "Write one read-only SQLite query. Include every project ordered by id. Output project_id, active_task_count, successful_latest_count. Active tasks have archived=0. For each active task choose its latest attempt by greatest finished_at, then greatest attempt id for ties; count it as successful only if that chosen status is 'success'. A task without attempts is not successful. Include empty projects. Return {sql:string}.",
+      "schema": "CREATE TABLE projects(id INTEGER PRIMARY KEY); CREATE TABLE tasks(id INTEGER PRIMARY KEY, project_id INTEGER, archived INTEGER); CREATE TABLE attempts(id INTEGER PRIMARY KEY, task_id INTEGER, finished_at INTEGER, status TEXT);"
+    },
+    "expected": null,
+    "sql_fixtures": [
+      {
+        "tables": {
+          "projects": [
+            [
+              1
+            ],
+            [
+              2
+            ],
+            [
+              3
+            ],
+            [
+              4
+            ],
+            [
+              5
+            ],
+            [
+              6
+            ]
+          ],
+          "tasks": [
+            [
+              1,
+              4,
+              0
+            ],
+            [
+              2,
+              3,
+              0
+            ],
+            [
+              3,
+              5,
+              0
+            ],
+            [
+              4,
+              3,
+              1
+            ],
+            [
+              5,
+              2,
+              0
+            ],
+            [
+              6,
+              4,
+              0
+            ],
+            [
+              7,
+              1,
+              0
+            ],
+            [
+              8,
+              3,
+              1
+            ],
+            [
+              9,
+              4,
+              0
+            ],
+            [
+              10,
+              3,
+              0
+            ],
+            [
+              11,
+              4,
+              0
+            ],
+            [
+              12,
+              5,
+              1
+            ],
+            [
+              13,
+              2,
+              0
+            ],
+            [
+              14,
+              5,
+              0
+            ],
+            [
+              15,
+              1,
+              0
+            ],
+            [
+              16,
+              5,
+              1
+            ]
+          ],
+          "attempts": [
+            [
+              1,
+              3,
+              4,
+              "failure"
+            ],
+            [
+              2,
+              3,
+              3,
+              "success"
+            ],
+            [
+              3,
+              1,
+              2,
+              "success"
+            ],
+            [
+              4,
+              9,
+              3,
+              "failure"
+            ],
+            [
+              5,
+              13,
+              1,
+              "success"
+            ],
+            [
+              6,
+              1,
+              2,
+              "success"
+            ],
+            [
+              7,
+              7,
+              4,
+              "success"
+            ],
+            [
+              8,
+              11,
+              4,
+              "success"
+            ],
+            [
+              9,
+              9,
+              3,
+              "success"
+            ],
+            [
+              10,
+              12,
+              1,
+              "success"
+            ],
+            [
+              11,
+              9,
+              1,
+              "failure"
+            ],
+            [
+              12,
+              10,
+              4,
+              "failure"
+            ],
+            [
+              13,
+              8,
+              4,
+              "success"
+            ],
+            [
+              14,
+              11,
+              1,
+              "success"
+            ],
+            [
+              15,
+              13,
+              3,
+              "failure"
+            ],
+            [
+              16,
+              6,
+              4,
+              "failure"
+            ],
+            [
+              17,
+              2,
+              3,
+              "success"
+            ],
+            [
+              18,
+              6,
+              3,
+              "failure"
+            ],
+            [
+              19,
+              9,
+              2,
+              "success"
+            ],
+            [
+              20,
+              7,
+              4,
+              "success"
+            ],
+            [
+              21,
+              9,
+              1,
+              "success"
+            ],
+            [
+              22,
+              11,
+              4,
+              "success"
+            ],
+            [
+              23,
+              7,
+              2,
+              "success"
+            ],
+            [
+              24,
+              13,
+              2,
+              "success"
+            ],
+            [
+              25,
+              2,
+              3,
+              "success"
+            ],
+            [
+              26,
+              7,
+              3,
+              "failure"
+            ],
+            [
+              27,
+              6,
+              1,
+              "failure"
+            ],
+            [
+              28,
+              6,
+              2,
+              "failure"
+            ],
+            [
+              29,
+              5,
+              4,
+              "failure"
+            ],
+            [
+              30,
+              12,
+              4,
+              "success"
+            ],
+            [
+              31,
+              3,
+              4,
+              "failure"
+            ],
+            [
+              32,
+              3,
+              2,
+              "success"
+            ],
+            [
+              33,
+              10,
+              1,
+              "failure"
+            ],
+            [
+              34,
+              13,
+              3,
+              "success"
+            ],
+            [
+              35,
+              4,
+              1,
+              "success"
+            ],
+            [
+              36,
+              4,
+              1,
+              "failure"
+            ],
+            [
+              37,
+              9,
+              2,
+              "success"
+            ],
+            [
+              38,
+              6,
+              3,
+              "success"
+            ],
+            [
+              39,
+              4,
+              4,
+              "failure"
+            ],
+            [
+              40,
+              11,
+              3,
+              "failure"
+            ]
+          ]
+        },
+        "expected": [
+          [
+            1,
+            2,
+            1
+          ],
+          [
+            2,
+            2,
+            1
+          ],
+          [
+            3,
+            2,
+            1
+          ],
+          [
+            4,
+            4,
+            3
+          ],
+          [
+            5,
+            2,
+            0
+          ],
+          [
+            6,
+            0,
+            0
+          ]
+        ]
+      },
+      {
+        "tables": {
+          "projects": [
+            [
+              1
+            ],
+            [
+              2
+            ],
+            [
+              3
+            ],
+            [
+              4
+            ],
+            [
+              5
+            ],
+            [
+              6
+            ]
+          ],
+          "tasks": [
+            [
+              1,
+              2,
+              0
+            ],
+            [
+              2,
+              2,
+              0
+            ],
+            [
+              3,
+              1,
+              0
+            ],
+            [
+              4,
+              5,
+              1
+            ],
+            [
+              5,
+              4,
+              0
+            ],
+            [
+              6,
+              2,
+              0
+            ],
+            [
+              7,
+              1,
+              0
+            ],
+            [
+              8,
+              3,
+              1
+            ],
+            [
+              9,
+              1,
+              0
+            ],
+            [
+              10,
+              2,
+              0
+            ],
+            [
+              11,
+              3,
+              0
+            ],
+            [
+              12,
+              1,
+              1
+            ],
+            [
+              13,
+              3,
+              0
+            ],
+            [
+              14,
+              5,
+              0
+            ],
+            [
+              15,
+              2,
+              0
+            ],
+            [
+              16,
+              5,
+              1
+            ]
+          ],
+          "attempts": [
+            [
+              1,
+              11,
+              4,
+              "success"
+            ],
+            [
+              2,
+              10,
+              1,
+              "failure"
+            ],
+            [
+              3,
+              5,
+              4,
+              "success"
+            ],
+            [
+              4,
+              3,
+              1,
+              "success"
+            ],
+            [
+              5,
+              12,
+              3,
+              "failure"
+            ],
+            [
+              6,
+              5,
+              2,
+              "failure"
+            ],
+            [
+              7,
+              5,
+              2,
+              "failure"
+            ],
+            [
+              8,
+              14,
+              3,
+              "success"
+            ],
+            [
+              9,
+              7,
+              1,
+              "failure"
+            ],
+            [
+              10,
+              9,
+              1,
+              "failure"
+            ],
+            [
+              11,
+              5,
+              3,
+              "failure"
+            ],
+            [
+              12,
+              7,
+              2,
+              "failure"
+            ],
+            [
+              13,
+              10,
+              3,
+              "failure"
+            ],
+            [
+              14,
+              10,
+              1,
+              "failure"
+            ],
+            [
+              15,
+              10,
+              4,
+              "failure"
+            ],
+            [
+              16,
+              2,
+              1,
+              "failure"
+            ],
+            [
+              17,
+              6,
+              1,
+              "failure"
+            ],
+            [
+              18,
+              13,
+              4,
+              "success"
+            ],
+            [
+              19,
+              14,
+              2,
+              "success"
+            ],
+            [
+              20,
+              7,
+              1,
+              "success"
+            ],
+            [
+              21,
+              8,
+              2,
+              "success"
+            ],
+            [
+              22,
+              1,
+              4,
+              "failure"
+            ],
+            [
+              23,
+              3,
+              3,
+              "failure"
+            ],
+            [
+              24,
+              11,
+              2,
+              "failure"
+            ],
+            [
+              25,
+              1,
+              1,
+              "success"
+            ],
+            [
+              26,
+              13,
+              2,
+              "success"
+            ],
+            [
+              27,
+              1,
+              2,
+              "failure"
+            ],
+            [
+              28,
+              2,
+              2,
+              "failure"
+            ],
+            [
+              29,
+              1,
+              1,
+              "failure"
+            ],
+            [
+              30,
+              12,
+              2,
+              "failure"
+            ],
+            [
+              31,
+              11,
+              4,
+              "failure"
+            ],
+            [
+              32,
+              12,
+              1,
+              "failure"
+            ],
+            [
+              33,
+              13,
+              1,
+              "failure"
+            ],
+            [
+              34,
+              2,
+              1,
+              "success"
+            ],
+            [
+              35,
+              9,
+              3,
+              "success"
+            ],
+            [
+              36,
+              6,
+              1,
+              "success"
+            ],
+            [
+              37,
+              11,
+              4,
+              "failure"
+            ],
+            [
+              38,
+              3,
+              1,
+              "success"
+            ],
+            [
+              39,
+              4,
+              3,
+              "success"
+            ],
+            [
+              40,
+              4,
+              3,
+              "failure"
+            ]
+          ]
+        },
+        "expected": [
+          [
+            1,
+            3,
+            1
+          ],
+          [
+            2,
+            5,
+            1
+          ],
+          [
+            3,
+            2,
+            1
+          ],
+          [
+            4,
+            1,
+            1
+          ],
+          [
+            5,
+            1,
+            1
+          ],
+          [
+            6,
+            0,
+            0
+          ]
+        ]
+      },
+      {
+        "tables": {
+          "projects": [
+            [
+              1
+            ],
+            [
+              2
+            ],
+            [
+              3
+            ],
+            [
+              4
+            ],
+            [
+              5
+            ],
+            [
+              6
+            ]
+          ],
+          "tasks": [
+            [
+              1,
+              4,
+              0
+            ],
+            [
+              2,
+              4,
+              0
+            ],
+            [
+              3,
+              1,
+              0
+            ],
+            [
+              4,
+              1,
+              1
+            ],
+            [
+              5,
+              3,
+              0
+            ],
+            [
+              6,
+              4,
+              0
+            ],
+            [
+              7,
+              3,
+              0
+            ],
+            [
+              8,
+              1,
+              1
+            ],
+            [
+              9,
+              5,
+              0
+            ],
+            [
+              10,
+              2,
+              0
+            ],
+            [
+              11,
+              5,
+              0
+            ],
+            [
+              12,
+              3,
+              1
+            ],
+            [
+              13,
+              3,
+              0
+            ],
+            [
+              14,
+              3,
+              0
+            ],
+            [
+              15,
+              3,
+              0
+            ],
+            [
+              16,
+              5,
+              1
+            ]
+          ],
+          "attempts": [
+            [
+              1,
+              12,
+              3,
+              "failure"
+            ],
+            [
+              2,
+              13,
+              4,
+              "success"
+            ],
+            [
+              3,
+              10,
+              1,
+              "failure"
+            ],
+            [
+              4,
+              3,
+              4,
+              "success"
+            ],
+            [
+              5,
+              1,
+              4,
+              "failure"
+            ],
+            [
+              6,
+              12,
+              1,
+              "success"
+            ],
+            [
+              7,
+              8,
+              1,
+              "failure"
+            ],
+            [
+              8,
+              2,
+              2,
+              "failure"
+            ],
+            [
+              9,
+              2,
+              1,
+              "failure"
+            ],
+            [
+              10,
+              5,
+              2,
+              "failure"
+            ],
+            [
+              11,
+              8,
+              4,
+              "failure"
+            ],
+            [
+              12,
+              5,
+              3,
+              "success"
+            ],
+            [
+              13,
+              7,
+              3,
+              "success"
+            ],
+            [
+              14,
+              12,
+              3,
+              "success"
+            ],
+            [
+              15,
+              4,
+              2,
+              "failure"
+            ],
+            [
+              16,
+              12,
+              1,
+              "success"
+            ],
+            [
+              17,
+              14,
+              4,
+              "success"
+            ],
+            [
+              18,
+              13,
+              3,
+              "success"
+            ],
+            [
+              19,
+              1,
+              3,
+              "success"
+            ],
+            [
+              20,
+              4,
+              4,
+              "success"
+            ],
+            [
+              21,
+              11,
+              4,
+              "success"
+            ],
+            [
+              22,
+              3,
+              1,
+              "failure"
+            ],
+            [
+              23,
+              13,
+              1,
+              "success"
+            ],
+            [
+              24,
+              7,
+              2,
+              "failure"
+            ],
+            [
+              25,
+              4,
+              1,
+              "failure"
+            ],
+            [
+              26,
+              12,
+              3,
+              "success"
+            ],
+            [
+              27,
+              13,
+              1,
+              "failure"
+            ],
+            [
+              28,
+              12,
+              2,
+              "failure"
+            ],
+            [
+              29,
+              5,
+              2,
+              "failure"
+            ],
+            [
+              30,
+              3,
+              1,
+              "failure"
+            ],
+            [
+              31,
+              12,
+              2,
+              "failure"
+            ],
+            [
+              32,
+              1,
+              1,
+              "success"
+            ],
+            [
+              33,
+              9,
+              4,
+              "failure"
+            ],
+            [
+              34,
+              5,
+              1,
+              "failure"
+            ],
+            [
+              35,
+              5,
+              4,
+              "failure"
+            ],
+            [
+              36,
+              8,
+              3,
+              "success"
+            ],
+            [
+              37,
+              4,
+              4,
+              "success"
+            ],
+            [
+              38,
+              10,
+              3,
+              "failure"
+            ],
+            [
+              39,
+              3,
+              1,
+              "success"
+            ],
+            [
+              40,
+              4,
+              3,
+              "success"
+            ]
+          ]
+        },
+        "expected": [
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            2,
+            1,
+            0
+          ],
+          [
+            3,
+            5,
+            3
+          ],
+          [
+            4,
+            3,
+            0
+          ],
+          [
+            5,
+            2,
+            1
+          ],
+          [
+            6,
+            0,
+            0
+          ]
+        ]
+      }
+    ]
+  }
+]

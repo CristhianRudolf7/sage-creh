@@ -1,0 +1,21 @@
+# Local environments and credentials must never enter the research repository.
+.env
+.env.*
+**/.env
+**/.env.*
+.venv/
+venv/
+*.pem
+*.key
+
+# Generated caches and intermediate compilation files; final PDFs are retained.
+**/__pycache__/
+*.py[cod]
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+qa/
+qa-v2/
+.DS_Store

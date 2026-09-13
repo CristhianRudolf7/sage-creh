@@ -1,0 +1,15 @@
+{
+  "date": "2026-09-13",
+  "reason_en": "Editorial framing and title only; experimental settings, prompts, task data, graders and recorded results are unchanged. Historical manifests retain their original hashes.",
+  "reason_es": "Solo cambian el enfoque editorial y el t\u00edtulo; configuraci\u00f3n experimental, prompts, tareas, evaluadores y resultados registrados no cambian. Los manifiestos hist\u00f3ricos conservan sus hashes originales.",
+  "files": {
+    "protocol.en.md": {
+      "original_sha256": "6ab043f3060fd9ca245e65972d3d519e0b6cea0e45cd17cb2f932ad1bc3307cf",
+      "current_sha256": "3dd976a156bc64d1433dffce686b6d916d2048c40d9257777e15f0766857b968"
+    },
+    "protocol.es.md": {
+      "original_sha256": "8278442e64be1b9e1aef729923718209606db88b04d3edd74b96eaabddc19f44",
+      "current_sha256": "960ac782d120efe2c568427961dc7aa48f771a99c215595f091c724aba9ca214"
+    }
+  }
+}

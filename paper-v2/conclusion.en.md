@@ -1,0 +1,7 @@
+**SAGE-CREH achieved 23/24 strict successes (95.8%), averaging 1,765 tokens and 7.34 seconds per task.** It used 47.2% fewer tokens than sequential, 49.3% fewer than parallel, 61.1% fewer than hierarchical and 30.2% fewer than reflexive.
+
+This was the highest observed strict score, but **it did not win under every criterion**. Normalizing only the SQL envelope gave sequential and reflexive 24/24; SAGE and the original single agent reached 23/24. The single agent needed fewer resources: 1,160 tokens and 4.62 seconds on average. The latency difference between SAGE and parallel was small and uncertain.
+
+SAGE without delegation reached 21/24 with 1,110 tokens: coordination added 59.1% more tokens and two successes in this sample. Two failures of that control were JSON envelopes with an extra key, which the predefined SQL normalization does not remove. Within SAGE's own traces, five initial candidates were corrected: three SQL-contract reviews and two adjudications involving dependencies and selection. Its only final failure was counting seven events instead of eight on T02, despite correct monetary totals.
+
+The practical reading is conditional: SAGE offers a useful tradeoff when strict answers are required, at lower consumption than fixed teams. If SQL normalization is allowed and cost is paramount, this sample favors the single agent; if observed normalized completion is paramount, reflexive is cheaper and faster than sequential. Completion-difference intervals do not establish general superiority.

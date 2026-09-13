@@ -1,0 +1,50 @@
+SAGE-CREH achieved the highest strict completion in the main comparison:
+23/24 (95.8\%), averaging 1765 tokens and 7.34 seconds. Relative to the four original
+patterns, tokens fell by 47.2\% versus sequential, 49.3\% versus parallel, 61.1\%
+versus hierarchical and 30.2\% versus reflexive. These are observed differences;
+strict-completion difference intervals include zero. Its mean time advantage
+over parallel was only 0.35 seconds, with an interval including zero; a latency
+advantage over reflexive is likewise not established.
+
+The conclusion depends on the output contract. With normalized SQL, sequential
+and reflexive reached 24/24; SAGE and the original single agent reached 23/24.
+The latter averaged 1160 tokens and 4.62 seconds, less than SAGE. Among the six
+main designs, the point-estimate Pareto frontier contains single agent and SAGE
+under strict scoring, and single agent and reflexive under secondary scoring.
+These are estimated frontiers, not population-dominance tests. SAGE is therefore
+not the best choice under every definition of success.
+
+SAGE without delegation reached 21/24 with 1110 tokens: adding coordination raised
+consumption by 59.1\% and yielded two additional successes in the sample, without
+a conclusive completion difference. Its two SQL failures contain an extra
+\texttt{uncertainties} key in the final envelope. That form is not covered by the
+predefined secondary normalization, which only wraps raw SQL strings. Thus even
+the secondary column does not separate every possible formatting error from
+content correctness.
+
+Inspection of SAGE's own traces identifies five improvements over its first
+candidate: three SQL-contract reviews and two adjudications involving dependencies
+and selection. No strict regressions followed review. Thirteen direct responses
+and five parallel agreements finished without an integrator; three adjudications
+and three selective reviews yielded 38 calls over 24 tasks. These are concrete
+mechanisms, not a reason to label every contract correction superior multiagent
+reasoning.
+
+SAGE's only final failure occurred on T02, first repetition: all monetary totals
+matched, but it returned seven events instead of eight. The contract was valid,
+no issues were reported and the direct path accepted it. This case identifies
+precisely what a shape-only gate does not detect.
+
+Selecting instructions reduced tokens by 40.5\% versus SAGE with ten skills
+(1765 versus 2966). Observed time did not fall: 7.34 versus 6.38 seconds, with an
+uncertain difference. Responses also changed routes: 38 versus 34 calls. This
+ablation measures the total loading effect under the same policy, not an identical
+executed graph. Both hierarchy conditions made 96 calls; loading ten skills raised
+tokens by 89.3\% without increasing normalized successes (22/24 in both).
+
+For this strict contract, SAGE is a lower-consumption adaptive alternative to the
+four fixed teams. If the system accepts SQL-envelope normalization and prioritizes
+cost, the evidence favors the single-agent reference. If observed normalized
+completion is the priority, it favors reflexive over sequential for lower mean
+consumption and time. This conditional choice reflects the evidence more faithfully
+than proclaiming a universally winning architecture.

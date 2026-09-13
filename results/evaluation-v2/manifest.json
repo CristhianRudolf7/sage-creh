@@ -1,0 +1,1129 @@
+{
+  "version": "2.0",
+  "created_at": "2026-09-13T15:01:21.821472+00:00",
+  "development": false,
+  "requested_model": "gpt-5.6-luna",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "max_output_tokens": 1536,
+  "max_calls": 5,
+  "max_parallel_workers": 2,
+  "http_timeout_seconds": [
+    10,
+    60
+  ],
+  "transport_retries": 0,
+  "run_start_deadline_seconds": 240,
+  "seed": 20260914,
+  "repetitions": 2,
+  "conditions": [
+    "single",
+    "sequential",
+    "parallel",
+    "hierarchical",
+    "reflexive",
+    "hierarchical_all_skills",
+    "sage",
+    "sage_single",
+    "sage_all_skills"
+  ],
+  "task_count": 12,
+  "run_count": 216,
+  "sage_policy": "parallel",
+  "python": "3.13.5",
+  "source_sha256": {
+    "benchmark/runner.py": "56ab3cb344f912a60acff5567607a5f5d7bfe61eb30946fb8dd319b3fe185fe5",
+    "benchmark/tasks.py": "4c53ce009b0949fea3a624d0b88ade690025727c53fadbdd79e35dfbafecc9ad",
+    "benchmark/test_benchmark.py": "63a7d6ab557e6fada301a3b8bbfa736339b57d56aa9433dba9803b3a8708fab8",
+    "extension/architecture.py": "2721e10d7cd97a47a4e3d6b92394c3889871e051ac53e80858c4518a9b66f25a",
+    "extension/protocol.en.md": "55138d0a222ecbdb46ba43f0d14fe2df77994ed4e7f09d0d1069adab7745ccef",
+    "extension/protocol.es.md": "4b060bb93fa5afa554739d6d2713eddf2f44161dca42f549fbab707ad17b3942",
+    "extension/run.py": "b30ad0b700d2c76a85a93efd60baf389db5c10fe98dabb527624c89747d92bab",
+    "extension/test_extension.py": "f4605e0397e12e18ce71ac7b255a91d7725e7fe381e2af903081e744a37e4c83",
+    "protocol.en.md": "3dd976a156bc64d1433dffce686b6d916d2048c40d9257777e15f0766857b968",
+    "protocol.es.md": "960ac782d120efe2c568427961dc7aa48f771a99c215595f091c724aba9ca214"
+  },
+  "same_tasks_as_v1": true,
+  "order": [
+    {
+      "task_id": "T10",
+      "trial": 2,
+      "condition": "reflexive"
+    },
+    {
+      "task_id": "T10",
+      "trial": 2,
+      "condition": "sage"
+    },
+    {
+      "task_id": "T10",
+      "trial": 2,
+      "condition": "parallel"
+    },
+    {
+      "task_id": "T10",
+      "trial": 2,
+      "condition": "sequential"
+    },
+    {
+      "task_id": "T10",
+      "trial": 2,
+      "condition": "sage_all_skills"
+    },
+    {
+      "task_id": "T10",
+      "trial": 2,
+      "condition": "hierarchical_all_skills"
+    },
+    {
+      "task_id": "T10",
+      "trial": 2,
+      "condition": "hierarchical"
+    },
+    {
+      "task_id": "T10",
+      "trial": 2,
+      "condition": "single"
+    },
+    {
+      "task_id": "T10",
+      "trial": 2,
+      "condition": "sage_single"
+    },
+    {
+      "task_id": "T08",
+      "trial": 1,
+      "condition": "sage_all_skills"
+    },
+    {
+      "task_id": "T08",
+      "trial": 1,
+      "condition": "hierarchical_all_skills"
+    },
+    {
+      "task_id": "T08",
+      "trial": 1,
+      "condition": "single"
+    },
+    {
+      "task_id": "T08",
+      "trial": 1,
+      "condition": "parallel"
+    },
+    {
+      "task_id": "T08",
+      "trial": 1,
+      "condition": "sage_single"
+    },
+    {
+      "task_id": "T08",
+      "trial": 1,
+      "condition": "reflexive"
+    },
+    {
+      "task_id": "T08",
+      "trial": 1,
+      "condition": "sequential"
+    },
+    {
+      "task_id": "T08",
+      "trial": 1,
+      "condition": "sage"
+    },
+    {
+      "task_id": "T08",
+      "trial": 1,
+      "condition": "hierarchical"
+    },
+    {
+      "task_id": "T02",
+      "trial": 1,
+      "condition": "sage_all_skills"
+    },
+    {
+      "task_id": "T02",
+      "trial": 1,
+      "condition": "sequential"
+    },
+    {
+      "task_id": "T02",
+      "trial": 1,
+      "condition": "sage"
+    },
+    {
+      "task_id": "T02",
+      "trial": 1,
+      "condition": "single"
+    },
+    {
+      "task_id": "T02",
+      "trial": 1,
+      "condition": "reflexive"
+    },
+    {
+      "task_id": "T02",
+      "trial": 1,
+      "condition": "hierarchical"
+    },
+    {
+      "task_id": "T02",
+      "trial": 1,
+      "condition": "hierarchical_all_skills"
+    },
+    {
+      "task_id": "T02",
+      "trial": 1,
+      "condition": "sage_single"
+    },
+    {
+      "task_id": "T02",
+      "trial": 1,
+      "condition": "parallel"
+    },
+    {
+      "task_id": "T05",
+      "trial": 2,
+      "condition": "hierarchical"
+    },
+    {
+      "task_id": "T05",
+      "trial": 2,
+      "condition": "reflexive"
+    },
+    {
+      "task_id": "T05",
+      "trial": 2,
+      "condition": "sequential"
+    },
+    {
+      "task_id": "T05",
+      "trial": 2,
+      "condition": "single"
+    },
+    {
+      "task_id": "T05",
+      "trial": 2,
+      "condition": "sage_all_skills"
+    },
+    {
+      "task_id": "T05",
+      "trial": 2,
+      "condition": "parallel"
+    },
+    {
+      "task_id": "T05",
+      "trial": 2,
+      "condition": "sage"
+    },
+    {
+      "task_id": "T05",
+      "trial": 2,
+      "condition": "sage_single"
+    },
+    {
+      "task_id": "T05",
+      "trial": 2,
+      "condition": "hierarchical_all_skills"
+    },
+    {
+      "task_id": "T01",
+      "trial": 2,
+      "condition": "sage_single"
+    },
+    {
+      "task_id": "T01",
+      "trial": 2,
+      "condition": "parallel"
+    },
+    {
+      "task_id": "T01",
+      "trial": 2,
+      "condition": "reflexive"
+    },
+    {
+      "task_id": "T01",
+      "trial": 2,
+      "condition": "hierarchical"
+    },
+    {
+      "task_id": "T01",
+      "trial": 2,
+      "condition": "sage"
+    },
+    {
+      "task_id": "T01",
+      "trial": 2,
+      "condition": "single"
+    },
+    {
+      "task_id": "T01",
+      "trial": 2,
+      "condition": "hierarchical_all_skills"
+    },
+    {
+      "task_id": "T01",
+      "trial": 2,
+      "condition": "sequential"
+    },
+    {
+      "task_id": "T01",
+      "trial": 2,
+      "condition": "sage_all_skills"
+    },
+    {
+      "task_id": "T04",
+      "trial": 2,
+      "condition": "sequential"
+    },
+    {
+      "task_id": "T04",
+      "trial": 2,
+      "condition": "single"
+    },
+    {
+      "task_id": "T04",
+      "trial": 2,
+      "condition": "hierarchical"
+    },
+    {
+      "task_id": "T04",
+      "trial": 2,
+      "condition": "hierarchical_all_skills"
+    },
+    {
+      "task_id": "T04",
+      "trial": 2,
+      "condition": "sage_all_skills"
+    },
+    {
+      "task_id": "T04",
+      "trial": 2,
+      "condition": "sage"
+    },
+    {
+      "task_id": "T04",
+      "trial": 2,
+      "condition": "parallel"
+    },
+    {
+      "task_id": "T04",
+      "trial": 2,
+      "condition": "sage_single"
+    },
+    {
+      "task_id": "T04",
+      "trial": 2,
+      "condition": "reflexive"
+    },
+    {
+      "task_id": "T06",
+      "trial": 2,
+      "condition": "hierarchical"
+    },
+    {
+      "task_id": "T06",
+      "trial": 2,
+      "condition": "sage"
+    },
+    {
+      "task_id": "T06",
+      "trial": 2,
+      "condition": "reflexive"
+    },
+    {
+      "task_id": "T06",
+      "trial": 2,
+      "condition": "parallel"
+    },
+    {
+      "task_id": "T06",
+      "trial": 2,
+      "condition": "single"
+    },
+    {
+      "task_id": "T06",
+      "trial": 2,
+      "condition": "sage_single"
+    },
+    {
+      "task_id": "T06",
+      "trial": 2,
+      "condition": "sequential"
+    },
+    {
+      "task_id": "T06",
+      "trial": 2,
+      "condition": "hierarchical_all_skills"
+    },
+    {
+      "task_id": "T06",
+      "trial": 2,
+      "condition": "sage_all_skills"
+    },
+    {
+      "task_id": "T04",
+      "trial": 1,
+      "condition": "single"
+    },
+    {
+      "task_id": "T04",
+      "trial": 1,
+      "condition": "sequential"
+    },
+    {
+      "task_id": "T04",
+      "trial": 1,
+      "condition": "hierarchical"
+    },
+    {
+      "task_id": "T04",
+      "trial": 1,
+      "condition": "reflexive"
+    },
+    {
+      "task_id": "T04",
+      "trial": 1,
+      "condition": "parallel"
+    },
+    {
+      "task_id": "T04",
+      "trial": 1,
+      "condition": "sage_single"
+    },
+    {
+      "task_id": "T04",
+      "trial": 1,
+      "condition": "hierarchical_all_skills"
+    },
+    {
+      "task_id": "T04",
+      "trial": 1,
+      "condition": "sage_all_skills"
+    },
+    {
+      "task_id": "T04",
+      "trial": 1,
+      "condition": "sage"
+    },
+    {
+      "task_id": "T12",
+      "trial": 2,
+      "condition": "parallel"
+    },
+    {
+      "task_id": "T12",
+      "trial": 2,
+      "condition": "hierarchical_all_skills"
+    },
+    {
+      "task_id": "T12",
+      "trial": 2,
+      "condition": "single"
+    },
+    {
+      "task_id": "T12",
+      "trial": 2,
+      "condition": "sage"
+    },
+    {
+      "task_id": "T12",
+      "trial": 2,
+      "condition": "sequential"
+    },
+    {
+      "task_id": "T12",
+      "trial": 2,
+      "condition": "hierarchical"
+    },
+    {
+      "task_id": "T12",
+      "trial": 2,
+      "condition": "sage_all_skills"
+    },
+    {
+      "task_id": "T12",
+      "trial": 2,
+      "condition": "reflexive"
+    },
+    {
+      "task_id": "T12",
+      "trial": 2,
+      "condition": "sage_single"
+    },
+    {
+      "task_id": "T03",
+      "trial": 1,
+      "condition": "sequential"
+    },
+    {
+      "task_id": "T03",
+      "trial": 1,
+      "condition": "hierarchical"
+    },
+    {
+      "task_id": "T03",
+      "trial": 1,
+      "condition": "sage"
+    },
+    {
+      "task_id": "T03",
+      "trial": 1,
+      "condition": "parallel"
+    },
+    {
+      "task_id": "T03",
+      "trial": 1,
+      "condition": "sage_single"
+    },
+    {
+      "task_id": "T03",
+      "trial": 1,
+      "condition": "reflexive"
+    },
+    {
+      "task_id": "T03",
+      "trial": 1,
+      "condition": "single"
+    },
+    {
+      "task_id": "T03",
+      "trial": 1,
+      "condition": "hierarchical_all_skills"
+    },
+    {
+      "task_id": "T03",
+      "trial": 1,
+      "condition": "sage_all_skills"
+    },
+    {
+      "task_id": "T06",
+      "trial": 1,
+      "condition": "sage_all_skills"
+    },
+    {
+      "task_id": "T06",
+      "trial": 1,
+      "condition": "hierarchical_all_skills"
+    },
+    {
+      "task_id": "T06",
+      "trial": 1,
+      "condition": "parallel"
+    },
+    {
+      "task_id": "T06",
+      "trial": 1,
+      "condition": "sage_single"
+    },
+    {
+      "task_id": "T06",
+      "trial": 1,
+      "condition": "reflexive"
+    },
+    {
+      "task_id": "T06",
+      "trial": 1,
+      "condition": "single"
+    },
+    {
+      "task_id": "T06",
+      "trial": 1,
+      "condition": "hierarchical"
+    },
+    {
+      "task_id": "T06",
+      "trial": 1,
+      "condition": "sage"
+    },
+    {
+      "task_id": "T06",
+      "trial": 1,
+      "condition": "sequential"
+    },
+    {
+      "task_id": "T11",
+      "trial": 2,
+      "condition": "sage_all_skills"
+    },
+    {
+      "task_id": "T11",
+      "trial": 2,
+      "condition": "hierarchical_all_skills"
+    },
+    {
+      "task_id": "T11",
+      "trial": 2,
+      "condition": "sage"
+    },
+    {
+      "task_id": "T11",
+      "trial": 2,
+      "condition": "sequential"
+    },
+    {
+      "task_id": "T11",
+      "trial": 2,
+      "condition": "reflexive"
+    },
+    {
+      "task_id": "T11",
+      "trial": 2,
+      "condition": "single"
+    },
+    {
+      "task_id": "T11",
+      "trial": 2,
+      "condition": "parallel"
+    },
+    {
+      "task_id": "T11",
+      "trial": 2,
+      "condition": "sage_single"
+    },
+    {
+      "task_id": "T11",
+      "trial": 2,
+      "condition": "hierarchical"
+    },
+    {
+      "task_id": "T05",
+      "trial": 1,
+      "condition": "parallel"
+    },
+    {
+      "task_id": "T05",
+      "trial": 1,
+      "condition": "hierarchical_all_skills"
+    },
+    {
+      "task_id": "T05",
+      "trial": 1,
+      "condition": "sequential"
+    },
+    {
+      "task_id": "T05",
+      "trial": 1,
+      "condition": "single"
+    },
+    {
+      "task_id": "T05",
+      "trial": 1,
+      "condition": "hierarchical"
+    },
+    {
+      "task_id": "T05",
+      "trial": 1,
+      "condition": "sage_single"
+    },
+    {
+      "task_id": "T05",
+      "trial": 1,
+      "condition": "sage"
+    },
+    {
+      "task_id": "T05",
+      "trial": 1,
+      "condition": "reflexive"
+    },
+    {
+      "task_id": "T05",
+      "trial": 1,
+      "condition": "sage_all_skills"
+    },
+    {
+      "task_id": "T11",
+      "trial": 1,
+      "condition": "sage_single"
+    },
+    {
+      "task_id": "T11",
+      "trial": 1,
+      "condition": "hierarchical"
+    },
+    {
+      "task_id": "T11",
+      "trial": 1,
+      "condition": "hierarchical_all_skills"
+    },
+    {
+      "task_id": "T11",
+      "trial": 1,
+      "condition": "parallel"
+    },
+    {
+      "task_id": "T11",
+      "trial": 1,
+      "condition": "reflexive"
+    },
+    {
+      "task_id": "T11",
+      "trial": 1,
+      "condition": "sage_all_skills"
+    },
+    {
+      "task_id": "T11",
+      "trial": 1,
+      "condition": "sage"
+    },
+    {
+      "task_id": "T11",
+      "trial": 1,
+      "condition": "single"
+    },
+    {
+      "task_id": "T11",
+      "trial": 1,
+      "condition": "sequential"
+    },
+    {
+      "task_id": "T09",
+      "trial": 1,
+      "condition": "hierarchical_all_skills"
+    },
+    {
+      "task_id": "T09",
+      "trial": 1,
+      "condition": "sequential"
+    },
+    {
+      "task_id": "T09",
+      "trial": 1,
+      "condition": "reflexive"
+    },
+    {
+      "task_id": "T09",
+      "trial": 1,
+      "condition": "sage"
+    },
+    {
+      "task_id": "T09",
+      "trial": 1,
+      "condition": "sage_single"
+    },
+    {
+      "task_id": "T09",
+      "trial": 1,
+      "condition": "sage_all_skills"
+    },
+    {
+      "task_id": "T09",
+      "trial": 1,
+      "condition": "single"
+    },
+    {
+      "task_id": "T09",
+      "trial": 1,
+      "condition": "hierarchical"
+    },
+    {
+      "task_id": "T09",
+      "trial": 1,
+      "condition": "parallel"
+    },
+    {
+      "task_id": "T07",
+      "trial": 1,
+      "condition": "sage_all_skills"
+    },
+    {
+      "task_id": "T07",
+      "trial": 1,
+      "condition": "parallel"
+    },
+    {
+      "task_id": "T07",
+      "trial": 1,
+      "condition": "sage"
+    },
+    {
+      "task_id": "T07",
+      "trial": 1,
+      "condition": "sequential"
+    },
+    {
+      "task_id": "T07",
+      "trial": 1,
+      "condition": "reflexive"
+    },
+    {
+      "task_id": "T07",
+      "trial": 1,
+      "condition": "single"
+    },
+    {
+      "task_id": "T07",
+      "trial": 1,
+      "condition": "hierarchical"
+    },
+    {
+      "task_id": "T07",
+      "trial": 1,
+      "condition": "hierarchical_all_skills"
+    },
+    {
+      "task_id": "T07",
+      "trial": 1,
+      "condition": "sage_single"
+    },
+    {
+      "task_id": "T10",
+      "trial": 1,
+      "condition": "sage_single"
+    },
+    {
+      "task_id": "T10",
+      "trial": 1,
+      "condition": "reflexive"
+    },
+    {
+      "task_id": "T10",
+      "trial": 1,
+      "condition": "sage_all_skills"
+    },
+    {
+      "task_id": "T10",
+      "trial": 1,
+      "condition": "single"
+    },
+    {
+      "task_id": "T10",
+      "trial": 1,
+      "condition": "sage"
+    },
+    {
+      "task_id": "T10",
+      "trial": 1,
+      "condition": "hierarchical_all_skills"
+    },
+    {
+      "task_id": "T10",
+      "trial": 1,
+      "condition": "hierarchical"
+    },
+    {
+      "task_id": "T10",
+      "trial": 1,
+      "condition": "sequential"
+    },
+    {
+      "task_id": "T10",
+      "trial": 1,
+      "condition": "parallel"
+    },
+    {
+      "task_id": "T09",
+      "trial": 2,
+      "condition": "parallel"
+    },
+    {
+      "task_id": "T09",
+      "trial": 2,
+      "condition": "sage_single"
+    },
+    {
+      "task_id": "T09",
+      "trial": 2,
+      "condition": "single"
+    },
+    {
+      "task_id": "T09",
+      "trial": 2,
+      "condition": "hierarchical"
+    },
+    {
+      "task_id": "T09",
+      "trial": 2,
+      "condition": "sage"
+    },
+    {
+      "task_id": "T09",
+      "trial": 2,
+      "condition": "sage_all_skills"
+    },
+    {
+      "task_id": "T09",
+      "trial": 2,
+      "condition": "hierarchical_all_skills"
+    },
+    {
+      "task_id": "T09",
+      "trial": 2,
+      "condition": "reflexive"
+    },
+    {
+      "task_id": "T09",
+      "trial": 2,
+      "condition": "sequential"
+    },
+    {
+      "task_id": "T01",
+      "trial": 1,
+      "condition": "single"
+    },
+    {
+      "task_id": "T01",
+      "trial": 1,
+      "condition": "hierarchical_all_skills"
+    },
+    {
+      "task_id": "T01",
+      "trial": 1,
+      "condition": "sage_all_skills"
+    },
+    {
+      "task_id": "T01",
+      "trial": 1,
+      "condition": "reflexive"
+    },
+    {
+      "task_id": "T01",
+      "trial": 1,
+      "condition": "hierarchical"
+    },
+    {
+      "task_id": "T01",
+      "trial": 1,
+      "condition": "sage_single"
+    },
+    {
+      "task_id": "T01",
+      "trial": 1,
+      "condition": "parallel"
+    },
+    {
+      "task_id": "T01",
+      "trial": 1,
+      "condition": "sequential"
+    },
+    {
+      "task_id": "T01",
+      "trial": 1,
+      "condition": "sage"
+    },
+    {
+      "task_id": "T07",
+      "trial": 2,
+      "condition": "reflexive"
+    },
+    {
+      "task_id": "T07",
+      "trial": 2,
+      "condition": "parallel"
+    },
+    {
+      "task_id": "T07",
+      "trial": 2,
+      "condition": "sequential"
+    },
+    {
+      "task_id": "T07",
+      "trial": 2,
+      "condition": "single"
+    },
+    {
+      "task_id": "T07",
+      "trial": 2,
+      "condition": "hierarchical_all_skills"
+    },
+    {
+      "task_id": "T07",
+      "trial": 2,
+      "condition": "sage_single"
+    },
+    {
+      "task_id": "T07",
+      "trial": 2,
+      "condition": "sage_all_skills"
+    },
+    {
+      "task_id": "T07",
+      "trial": 2,
+      "condition": "hierarchical"
+    },
+    {
+      "task_id": "T07",
+      "trial": 2,
+      "condition": "sage"
+    },
+    {
+      "task_id": "T12",
+      "trial": 1,
+      "condition": "reflexive"
+    },
+    {
+      "task_id": "T12",
+      "trial": 1,
+      "condition": "hierarchical"
+    },
+    {
+      "task_id": "T12",
+      "trial": 1,
+      "condition": "single"
+    },
+    {
+      "task_id": "T12",
+      "trial": 1,
+      "condition": "parallel"
+    },
+    {
+      "task_id": "T12",
+      "trial": 1,
+      "condition": "sage_single"
+    },
+    {
+      "task_id": "T12",
+      "trial": 1,
+      "condition": "sage"
+    },
+    {
+      "task_id": "T12",
+      "trial": 1,
+      "condition": "sequential"
+    },
+    {
+      "task_id": "T12",
+      "trial": 1,
+      "condition": "hierarchical_all_skills"
+    },
+    {
+      "task_id": "T12",
+      "trial": 1,
+      "condition": "sage_all_skills"
+    },
+    {
+      "task_id": "T03",
+      "trial": 2,
+      "condition": "sage_all_skills"
+    },
+    {
+      "task_id": "T03",
+      "trial": 2,
+      "condition": "hierarchical"
+    },
+    {
+      "task_id": "T03",
+      "trial": 2,
+      "condition": "sequential"
+    },
+    {
+      "task_id": "T03",
+      "trial": 2,
+      "condition": "sage_single"
+    },
+    {
+      "task_id": "T03",
+      "trial": 2,
+      "condition": "hierarchical_all_skills"
+    },
+    {
+      "task_id": "T03",
+      "trial": 2,
+      "condition": "reflexive"
+    },
+    {
+      "task_id": "T03",
+      "trial": 2,
+      "condition": "parallel"
+    },
+    {
+      "task_id": "T03",
+      "trial": 2,
+      "condition": "sage"
+    },
+    {
+      "task_id": "T03",
+      "trial": 2,
+      "condition": "single"
+    },
+    {
+      "task_id": "T08",
+      "trial": 2,
+      "condition": "reflexive"
+    },
+    {
+      "task_id": "T08",
+      "trial": 2,
+      "condition": "hierarchical_all_skills"
+    },
+    {
+      "task_id": "T08",
+      "trial": 2,
+      "condition": "single"
+    },
+    {
+      "task_id": "T08",
+      "trial": 2,
+      "condition": "sage_all_skills"
+    },
+    {
+      "task_id": "T08",
+      "trial": 2,
+      "condition": "sage"
+    },
+    {
+      "task_id": "T08",
+      "trial": 2,
+      "condition": "sequential"
+    },
+    {
+      "task_id": "T08",
+      "trial": 2,
+      "condition": "parallel"
+    },
+    {
+      "task_id": "T08",
+      "trial": 2,
+      "condition": "hierarchical"
+    },
+    {
+      "task_id": "T08",
+      "trial": 2,
+      "condition": "sage_single"
+    },
+    {
+      "task_id": "T02",
+      "trial": 2,
+      "condition": "hierarchical_all_skills"
+    },
+    {
+      "task_id": "T02",
+      "trial": 2,
+      "condition": "parallel"
+    },
+    {
+      "task_id": "T02",
+      "trial": 2,
+      "condition": "sage_single"
+    },
+    {
+      "task_id": "T02",
+      "trial": 2,
+      "condition": "hierarchical"
+    },
+    {
+      "task_id": "T02",
+      "trial": 2,
+      "condition": "sage_all_skills"
+    },
+    {
+      "task_id": "T02",
+      "trial": 2,
+      "condition": "single"
+    },
+    {
+      "task_id": "T02",
+      "trial": 2,
+      "condition": "sequential"
+    },
+    {
+      "task_id": "T02",
+      "trial": 2,
+      "condition": "reflexive"
+    },
+    {
+      "task_id": "T02",
+      "trial": 2,
+      "condition": "sage"
+    }
+  ]
+}

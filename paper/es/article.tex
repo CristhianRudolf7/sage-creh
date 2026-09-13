@@ -1,0 +1,21 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[spanish]{creh-article}
+\usepackage{array}
+\setlength{\emergencystretch}{2em}
+\newcommand{\source}[2]{\footnote{\href{#1}{#2}.}}
+\begin{document}
+\ArticleTitle{PREPRINT / ESTUDIO EXPLORATORIO}{Coordinación de subagentes:\\tokens, tiempo y cumplimiento}{13 de septiembre de 2026 / v1.0}
+\input{abstract.tex}
+\Keywords{sistemas multiagente; orquestación; skills; eficiencia de tokens; evaluación reproducible.}
+\section{Introducción}
+Un asistente personal puede delegar trabajo en agentes especializados, pero cada delegación consume recursos antes de producir trabajo útil. Hay que preparar instrucciones, transferir contexto, esperar respuestas e integrar resultados. Un equipo puede terminar antes un trabajo independiente; también puede repetir varias veces un cálculo sencillo sin mejorar la respuesta. La pregunta de ingeniería es, por tanto, cuándo la coordinación justifica su coste.
+
+Este estudio investiga cómo elegir una arquitectura de subagentes considerando cumplimiento de tareas, consumo de tokens y tiempo transcurrido. Compara cuatro patrones acotados de coordinación con un solucionador individual y evalúa por separado cargar una biblioteca completa de skills. La contribución es una comparación empírica pequeña y transparente: tareas fijas, llamadas reales, evaluación determinista, registros de recursos por llamada y materiales editables bilingües. No introduce un modelo entrenado ni establece un benchmark de arquitectura en producción.
+
+Se distinguen tres cantidades que a menudo se confunden. El éxito describe el resultado entregado. Los tokens totales miden el trabajo procesado entre todas las llamadas, incluido el contexto repetido. El tiempo transcurrido mide la espera del usuario y permite que las llamadas se solapen. Un contexto más corto en un trabajador no implica, por sí solo, menos tokens totales ni menor uso de RAM en la aplicación.
+\input{literature.tex}
+\input{methods.tex}
+\input{results.tex}
+\input{discussion.tex}
+\input{references.tex}
+\end{document}

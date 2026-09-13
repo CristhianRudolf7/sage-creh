@@ -1,0 +1,77 @@
+\section{Arquitecturas implementadas}
+Todos los nodos llaman al mismo modelo mediante solicitudes independientes sin estado. Un rol se implementa con instrucciones y un traspaso explícito; no es otro especialista entrenado ni un proceso persistente. Las cuatro configuraciones multiagente cambian el flujo de información y decisiones. Son implementaciones pequeñas de familias de patrones, no réplicas de los frameworks citados.
+
+\begin{table}[htbp]
+\centering\small
+\begin{tabular}{@{}p{26mm}p{91mm}r@{}}
+\toprule
+\textbf{Configuración} & \textbf{Flujo de control} & \textbf{Llamadas}\\
+\midrule
+Único & Un solucionador recibe la petición completa. & 1\\
+Secuencial & Extraer evidencia; resolver; integrar, con el último traspaso. & 3\\
+Paralela & Dos especialistas complementarios fijos en paralelo; integración posterior. & 3\\
+Jerárquica & Supervisor elige 1--2 encargos; trabajadores ejecutan; supervisor integra. & 3--4\\
+Reflexiva & Proponer; criticar; revisar si se rechaza. Máximo dos rondas de crítica/revisión. & 2--5\\
+\bottomrule
+\end{tabular}
+\caption{Comparación principal. La configuración adicional con todos los skills conserva el flujo jerárquico. Una llamada es una solicitud completa a la API.}
+\label{tab:architectures}
+\end{table}
+
+\textbf{Secuencial.} El primer trabajador extrae hechos y restricciones. El segundo calcula un candidato y el nodo final lo contrasta con la petición original. Cada etapa recibe el original y solo el último traspaso, evitando un historial ilimitado. Ofrece un orden predecible, pero sitúa las tres llamadas en la ruta que determina la espera.
+
+\textbf{Paralela.} Un trabajador aborda datos y cálculos principales; el otro, excepciones, ámbito y dependencias. Ambos reciben la tarea completa. Los encargos fijos evitan una llamada de planificación y el integrador ve ambas salidas. Se evalúa análisis complementario en paralelo, no una votación ni acciones externas simultáneas.
+
+\textbf{Jerárquica.} La primera llamada produce una lista JSON con uno o dos encargos concretos. Los trabajadores reciben su encargo y la tarea original; la llamada final recibe plan y hallazgos. Un plan inválido cuenta como fallo. No se permiten subagentes de segundo nivel y siempre se delega: la opción de resolver directamente corresponde a la referencia individual.
+
+\textbf{Reflexiva.} Un proponente entrega un candidato. Un crítico independiente lo aprueba sin observaciones o indica correcciones. La revisión recibe candidato y crítica. Se permiten dos rondas como máximo y se evalúa el último candidato aunque la última revisión autorizada no tenga aprobación posterior. El crítico nunca ve respuestas de referencia ni resultados de pruebas.
+
+Las configuraciones principales reciben los metadatos de diez skills y un skill procedural pertinente. Una variante jerárquica carga los diez cuerpos completos en cada nodo. La selección utiliza la etiqueta conocida del tipo de tarea, no una llamada de inferencia. Se aísla la política de carga; no se demuestra que el asistente pueda seleccionar siempre el skill correcto desde lenguaje natural.
+
+\section{Método experimental}
+\subsection{Tareas y evaluación objetiva}
+La evaluación incluye doce instancias distintas diseñadas para el estudio. Son sintéticas y autosuficientes: se entregan datos, esquema y reglas, mientras las respuestas esperadas y bases de prueba permanecen en el evaluador. El modelo evaluado no dispone de web, modificaciones de archivos ni terminal. SQL solo se ejecuta en bases temporales en memoria con autorización de solo lectura y límite de trabajo por sentencia.
+
+\begin{table}[htbp]
+\centering\small
+\begin{tabular}{@{}lp{28mm}p{101mm}@{}}
+\toprule
+\textbf{IDs} & \textbf{Grupo} & \textbf{Requisitos evaluados}\\
+\midrule
+T01--02 & Registros & Resolver revisiones antes de filtrar; sumar céntimos enteros con signo por proyecto.\\
+T03--04 & Calendario & Primer intervalo común para tres personas, desfases UTC fijos e intervalos ocupados semiabiertos.\\
+T05--06 & Dependencias & Inicios mínimos y ruta crítica con desempate lexicográfico en once nodos de un DAG.\\
+T07--08 & Selección & Elegir cuatro de doce elementos con presupuesto, cobertura, prerrequisitos e incompatibilidades.\\
+T09--10 & Memoria & Reducir 24 eventos por ámbito, conservando procedencia, preferencias locales y candidatos sin confirmar.\\
+T11--12 & SQL & Sumar sin multiplicar uniones; elegir últimos intentos con desempates; conservar entidades vacías.\\
+\bottomrule
+\end{tabular}
+\caption{Dos instancias por grupo. Cada instancia SQL tiene tres bases distintas; superar las tres cuenta como una tarea completada.}
+\label{tab:tasks}
+\end{table}
+
+Diez tareas exigen una respuesta estructurada exacta. La referencia utiliza reducción de eventos, búsqueda de intervalos, programación dinámica o enumeración exhaustiva. Las dos tareas SQL requieren una consulta que supere las tres bases. El formato principal es un objeto que contiene únicamente \texttt{answer}, cuyo valor debe respetar la estructura pedida. Una forma incorrecta falla aunque una persona pueda interpretarla. Se conserva el porcentaje de bases SQL superadas como diagnóstico secundario.
+
+Siete pruebas locales del arnés abarcan referencias válidas, respuestas plausibles incorrectas, multiplicación de uniones y desempates SQL, solo lectura, concurrencia, respuestas incompletas y conteo de tokens. Validan la medición y no se cuentan como aciertos del agente. Un piloto separado de seis configuraciones utilizó otra instancia contable; se conserva su evidencia y se excluye de las tablas de rendimiento.
+
+\subsection{Controles de ejecución}
+Cada tarea se ejecuta dos veces en seis configuraciones: 144 ejecuciones, 120 de la comparación principal y 24 de carga de skills. Los bloques tarea/repetición y el orden interno de configuraciones se aleatorizan con semilla 20260913. Solo hay una ejecución a la vez y hasta dos llamadas de trabajadores simultáneas dentro de los flujos compatibles. El protocolo local y los hashes se fijaron antes de evaluar; no hubo prerregistro externo.
+
+Todas las solicitudes usan \texttt{gpt-5.6-luna}, pensamiento \texttt{low}, API Responses, modo objeto JSON, sin streaming y \texttt{store:false}. El máximo por llamada es 1.536 tokens de salida, incluido razonamiento. No se definen temperatura ni semilla del modelo. La documentación oficial confirma identificador y esfuerzo; es orientación de implementación fuera del corpus de nueve papers.\source{https://developers.openai.com/api/docs/models/gpt-5.6-luna}{OpenAI, documentación GPT-5.6 Luna, consultada el 13 de septiembre de 2026}
+
+El techo común es de cinco llamadas. No comienza otra después de 240 segundos; los límites HTTP de conexión/lectura son 10/60 segundos. Es un plazo de inicio, no una interrupción estricta del tiempo total. No hay reintentos de transporte ni caché propia de respuestas. La caché de entrada del proveedor sigue siendo posible y se registra. Se conservan los fallos sin repeticiones selectivas. No se ajustaron prompts, tareas, límites ni evaluador principal según el rendimiento observado.
+
+Se igualan modelo, acceso a datos y máxima salida por llamada, no el cómputo consumido. Un solucionador de una llamada y un flujo de varias gastan cantidades distintas. Se comparan, por tanto, configuraciones completas de roles y orquestación; no se puede aislar la topología del efecto de más inferencia o del texto de cada rol.
+
+\subsection{Métricas e incertidumbre}
+Para la configuración $a$, $s_{ai}$ indica éxito completo, $t_{ai}$ suma tokens de entrada y salida informados y $w_{ai}$ es tiempo transcurrido. Con $N=24$ ejecuciones por configuración, las medidas principales son
+\begin{equation}
+S_a=\frac{1}{N}\sum_i s_{ai},\qquad
+\overline T_a=\frac{1}{N}\sum_i t_{ai},\qquad
+\overline W_a=\frac{1}{N}\sum_i w_{ai}.
+\end{equation}
+La eficiencia es $10^5\sum_i s_{ai}/\sum_i t_{ai}$ aciertos por 100.000 tokens y $60\sum_i s_{ai}/\sum_i w_{ai}$ aciertos por minuto acumulado. Ambas incluyen intentos fallidos. La última describe una carga secuencial, no la capacidad de un servidor saturado.
+
+Se cuentan supervisor, crítico, entrada repetida y razonamiento. La entrada cacheada y el razonamiento ya están incluidos en el total y no se suman otra vez. El tiempo incluye orquestación, espera de red y escritura de trazas, pero excluye el evaluador final. Se guarda también la suma de duraciones API, que no se usa como latencia cuando hay solapamiento. El consumo ausente convertiría los totales en cotas inferiores, sin reemplazarlos por estimaciones.
+
+Se utilizan 10.000 muestras bootstrap pareadas por tarea con semilla 20260913: se remuestrean doce identificadores conservando sus dos repeticiones y todas las configuraciones. Los percentiles delimitan intervalos descriptivos del 95\% para éxito, tokens medios y tiempo medio; la comparación de skills usa diferencias pareadas. La unidad independiente es la instancia, no cada repetición. Son intervalos exploratorios de una muestra pequeña; la distribución sintética no representa todo el trabajo de un asistente.

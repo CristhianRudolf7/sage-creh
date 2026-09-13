@@ -1,0 +1,15 @@
+{
+  "finished_at": "2026-09-13T15:00:23.033985+00:00",
+  "source_sha256": {
+    "benchmark/runner.py": "56ab3cb344f912a60acff5567607a5f5d7bfe61eb30946fb8dd319b3fe185fe5",
+    "benchmark/tasks.py": "4c53ce009b0949fea3a624d0b88ade690025727c53fadbdd79e35dfbafecc9ad",
+    "benchmark/test_benchmark.py": "63a7d6ab557e6fada301a3b8bbfa736339b57d56aa9433dba9803b3a8708fab8",
+    "extension/architecture.py": "2721e10d7cd97a47a4e3d6b92394c3889871e051ac53e80858c4518a9b66f25a",
+    "extension/protocol.en.md": "55138d0a222ecbdb46ba43f0d14fe2df77994ed4e7f09d0d1069adab7745ccef",
+    "extension/protocol.es.md": "4b060bb93fa5afa554739d6d2713eddf2f44161dca42f549fbab707ad17b3942",
+    "extension/run.py": "f93f7d534e87745f276a19ab08aab5d9516b1e707dc70fac90492a3558121085",
+    "extension/test_extension.py": "b7f26ac4bff047dc9d879386ae4210da24c9da79d51ab41ed5f2df1e1f602e8a",
+    "protocol.en.md": "3dd976a156bc64d1433dffce686b6d916d2048c40d9257777e15f0766857b968",
+    "protocol.es.md": "960ac782d120efe2c568427961dc7aa48f771a99c215595f091c724aba9ca214"
+  }
+}

@@ -1,0 +1,77 @@
+\section{Implemented architectures}
+All nodes call the same model through independent, stateless requests. A role is implemented by instructions and an explicit handoff; there is no separate trained specialist or persistent agent process. The four multi-agent conditions change the flow of information and decisions. They are deliberately small implementations of pattern families, not replicas of any cited framework.
+
+\begin{table}[htbp]
+\centering\small
+\begin{tabular}{@{}p{26mm}p{91mm}r@{}}
+\toprule
+\textbf{Condition} & \textbf{Control flow} & \textbf{Calls}\\
+\midrule
+Single & One solver receives the complete request. & 1\\
+Sequential & Extract evidence; solve; finalize, with a rolling handoff. & 3\\
+Parallel & Two fixed complementary specialists run concurrently; a merger integrates. & 3\\
+Hierarchical & A supervisor selects 1--2 assignments; workers run; the supervisor integrates. & 3--4\\
+Reflexive & Propose; critique; revise if rejected. At most two critique/revision rounds. & 2--5\\
+\bottomrule
+\end{tabular}
+\caption{Primary comparison. The additional all-skills condition uses the same hierarchical control flow. A call means one complete API request.}
+\label{tab:architectures}
+\end{table}
+
+\textbf{Sequential.} The first worker extracts facts and constraints. The second computes a candidate, and the final node reconciles it with the original request. Each stage receives the original input and only the preceding handoff, avoiding an unlimited transcript. This offers predictable sequencing but places all three model calls on the critical path.
+
+\textbf{Parallel.} One worker focuses on data and principal calculations; the other on exceptions, scope and dependencies. Both receive the complete task. Their fixed assignments require no planning call, and the merger sees both outputs. This tests complementary parallel analysis, not an ensemble vote or parallel external actions.
+
+\textbf{Hierarchical.} The first call outputs a JSON list of one or two concrete assignments. Workers receive their assignment and the original task; the final call receives the plan and findings. An invalid plan is a failure. The supervisor cannot create grandchildren, and this condition always delegates: the option of solving directly is represented by the separate baseline.
+
+\textbf{Reflexive.} A proposer supplies a candidate. An independent critic either approves it with no issues or provides corrections. Revisions receive the candidate and critique. There are at most two feedback rounds, and the last candidate is evaluated even if the final allowed revision has no subsequent approval. The critic never sees reference answers or test results.
+
+The primary conditions all receive a ten-entry skill metadata catalog and one relevant procedural skill. A separate hierarchical condition loads all ten full skill bodies at every node. Selection uses the known task-family label, not an inference call. This ablation isolates the payload policy; it does not establish that an assistant can always choose the correct skill from natural language.
+
+\section{Experimental method}
+\subsection{Tasks and objective scoring}
+The evaluation contains twelve distinct, author-designed instances. They are synthetic and self-contained: task data, schema and business rules are supplied, while expected answers and database fixtures remain evaluator-side. No web access, filesystem mutation or terminal tool is exposed to the evaluated model. SQL is executed only in temporary in-memory databases with a read-only authorizer and a statement-work limit.
+
+\begin{table}[htbp]
+\centering\small
+\begin{tabular}{@{}lp{28mm}p{101mm}@{}}
+\toprule
+\textbf{IDs} & \textbf{Family} & \textbf{Requirements tested}\\
+\midrule
+T01--02 & Ledger & Resolve revisions before filtering; aggregate signed integer cents by project.\\
+T03--04 & Calendar & Earliest common interval for three participants, fixed UTC offsets and half-open busy intervals.\\
+T05--06 & Dependencies & Earliest starts and lexicographically resolved critical path across eleven DAG nodes.\\
+T07--08 & Selection & Select four of twelve items under budget, coverage, prerequisite and incompatibility constraints.\\
+T09--10 & Memory & Reduce 24 scoped events; preserve provenance, local overrides and unconfirmed candidates.\\
+T11--12 & SQL & Aggregate without multiplied joins; select latest attempts with ties; retain empty entities.\\
+\bottomrule
+\end{tabular}
+\caption{Two instances per family. Each SQL instance has three distinct database fixtures; passing all three counts as one completed task.}
+\label{tab:tasks}
+\end{table}
+
+Ten tasks require an exact structured answer. Ground truth uses event reducers, interval search, dynamic programming or exhaustive enumeration. The two SQL tasks require one query that passes all three fixtures. The primary output schema is an object containing only \texttt{answer}; its value must match the task-specified structure. Incorrect shapes fail the primary metric even when a person could interpret them. SQL fixture pass fractions are retained as secondary diagnostics.
+
+Seven offline harness tests cover valid references, plausible wrong answers, SQL join multiplication and timestamp ties, read-only enforcement, concurrency, incomplete responses and token accounting. These tests validate measurement logic and are not counted as agent successes. A separate six-condition development pilot used a different ledger instance; its evidence is preserved but excluded from all performance tables.
+
+\subsection{Execution controls}
+Each task is run twice under six conditions: 144 evaluation runs, including 120 for the primary five-condition comparison and 24 for the skill ablation. Task/repetition blocks and condition order within blocks are shuffled using seed 20260913. Only one run executes at a time, with at most two simultaneous worker calls inside an eligible workflow. The local protocol and source hashes were fixed before evaluation; there was no external preregistration.
+
+Every request uses \texttt{gpt-5.6-luna}, reasoning \texttt{low}, Responses API, JSON-object mode, non-streaming output and \texttt{store:false}. The per-call output cap is 1,536 tokens, including reasoning. Temperature and a model seed are not set. The model identifier and effort are supported by the official API documentation, which is implementation guidance outside the nine-paper corpus.\source{https://developers.openai.com/api/docs/models/gpt-5.6-luna}{OpenAI, GPT-5.6 Luna documentation, accessed 13 September 2026}
+
+The common ceiling is five calls per run. No new call starts after 240 seconds; HTTP connection/read timeouts are 10/60 seconds. This is a call-start deadline rather than a strict wall-time kill. Transport retries and application response caching are disabled. Provider input caching remains possible and is recorded. Failures are retained without selective reruns. Prompts, tasks, caps and the primary grader were not tuned on evaluation performance.
+
+These controls equalize model, data access and maximum per-call output, not consumed compute. A one-call solver and a multi-call workflow naturally spend different amounts. The comparison therefore evaluates complete role-and-orchestration configurations; it cannot isolate topology from the effect of extra inference or role wording.
+
+\subsection{Metrics and uncertainty}
+For configuration $a$, let $s_{ai}$ be whole-task success, $t_{ai}$ the sum of provider-reported input and output tokens, and $w_{ai}$ elapsed run time. With $N=24$ runs per configuration, the principal measures are
+\begin{equation}
+S_a=\frac{1}{N}\sum_i s_{ai},\qquad
+\overline T_a=\frac{1}{N}\sum_i t_{ai},\qquad
+\overline W_a=\frac{1}{N}\sum_i w_{ai}.
+\end{equation}
+Resource efficiency is $10^5\sum_i s_{ai}/\sum_i t_{ai}$ successes per 100,000 tokens and $60\sum_i s_{ai}/\sum_i w_{ai}$ successes per accumulated minute. Both include failed attempts. The latter describes serial-workload efficiency, not server throughput under saturation.
+
+Tokens include supervisors, critics, repeated input and output reasoning. Cached input and reasoning counts are already subsets of the total and are not added twice. Wall time includes orchestration, network waiting and trace writes, excluding the final evaluator. The sum of API durations is also stored but is not used as elapsed latency when requests overlap. Missing usage would make token totals lower bounds rather than estimated replacements.
+
+We use 10,000 paired cluster-bootstrap samples with seed 20260913: resample the twelve task ids and retain both repetitions and all conditions for each selected id. Percentile 95\% intervals describe success, mean tokens and mean time; the skill comparison uses paired differences. The independent unit is the task instance, not every repeated run. Small-sample intervals are exploratory, and the synthetic task distribution cannot represent all assistant work.

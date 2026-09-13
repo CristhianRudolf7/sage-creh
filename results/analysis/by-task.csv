@@ -1,0 +1,13 @@
+task_id,family,single,sequential,parallel,hierarchical,reflexive,hierarchical_all_skills
+T01,ledger,2,2,2,2,2,2
+T02,ledger,2,2,2,2,2,2
+T03,schedule,2,2,2,2,2,2
+T04,schedule,2,2,2,2,2,2
+T05,dependencies,1,2,1,2,2,2
+T06,dependencies,2,2,2,2,2,2
+T07,selection,2,2,2,2,2,2
+T08,selection,2,2,2,2,2,2
+T09,memory,2,2,2,2,2,2
+T10,memory,2,2,2,2,2,2
+T11,sql,0,0,0,0,0,0
+T12,sql,1,0,0,0,0,1

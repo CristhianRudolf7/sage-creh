@@ -1,0 +1,213 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[english]{creh-article}
+\usepackage{array,tabularx}
+\setlength{\emergencystretch}{2em}
+\newcommand{\source}[2]{\footnote{\href{#1}{#2}.}}
+\begin{document}
+\ArticleTitle{PREPRINT / EXPLORATORY STUDY}{Subagent coordination:\\SAGE-CREH and\\skill selection}{13 September 2026 / v2.0}
+\input{abstract.tex}
+\Keywords{subagents; adaptive delegation; skills; tokens; latency; paired evaluation.}
+
+\section{Research question}
+The unit of design is not the model but the organization of its calls: who solves,
+who checks, when to delegate, and which instructions each role receives. Holding
+the model fixed, we ask whether a fifth, adaptive architecture can retain the
+completion achieved by the four original architectures with less coordination.
+Three objectives remain distinct: completing the whole task, reducing aggregate
+tokens, and shortening user-perceived waiting time. None substitutes for another.
+
+Version 1 compared sequential, parallel, hierarchical and reflexive flows with a
+single agent and a skill-loading ablation. Version 2 implements SAGE-CREH, evaluates
+two development policies and reruns every control. The contribution is this
+bounded implementation with reproducible evidence, not universal superiority or
+the invention of selective delegation.
+
+\input{literature.tex}
+\subsection{Three additional references for adaptive coordination}
+Uno-Orchestra combines selective decomposition and delegation in a learned policy.
+It motivates deciding when delegation is worthwhile; we do not reproduce its
+training.\source{https://arxiv.org/html/2605.05007v1}{Cui et al., 2026}
+ProgRouter guides execution decisions using progress, time and cost. Our gate is
+neither its learned predictor nor a router across different models.\source{https://arxiv.org/html/2608.25992v1}{Li, Abdelmoniem and Wang, 2026}
+TROVE retains valid continuations and edits routes in response to intermediate
+evidence. We use simple conditional review, without its offline-learned skill
+graph.\source{https://arxiv.org/html/2609.05019v1}{T. Wang et al., 2026}
+The expanded review comprises twelve arXiv papers, retaining identified versions
+and keeping their reported scores separate from this experiment.
+
+\section{Five architectures and the single-agent reference}
+All agents are stateless calls to the same model. A different role does not imply
+different trained weights. Handoffs contain visible answers, findings or unresolved
+issues, never private deliberation. Every call receives the full public task;
+partial observations and reduced production context are not evaluated.
+
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}p{25mm}Xr@{}}
+\toprule Pattern & Implementation & Calls \\ \midrule
+Single & One solver returns the answer. & 1 \\
+Sequential & Evidence extraction, solving and integration in three stages. & 3 \\
+Parallel & Two complementary concurrent specialists followed by an integrator. & 3 \\
+Hierarchical & Supervisor plans one or two jobs, concurrent workers execute, supervisor integrates. & 3--4 \\
+Reflexive & Proposal and critique; revise if challenged, at most two rounds. & 2--5 \\
+SAGE-CREH & Direct path or two solvers; review only upon defined signals. & 1--3 \\
+\bottomrule
+\end{tabularx}\end{center}
+
+\subsection{SAGE-CREH: skill-aware gated execution}
+A lightweight deterministic coordinator routes using public task structure. There
+is no preliminary planning call. It selects one skill and chooses either one
+proposal or two complete concurrent solvers. The second solver prioritizes
+constraints, dependencies and tie breakers without seeing the first proposal.
+This adaptive redundancy differs from the fixed complementary division of work
+in the original parallel condition.
+
+\begin{enumerate}
+\item Identify the public contract and load only its relevant skill instructions.
+\item Flag structural risk for a graph with at least eight nodes and any node with
+two or more predecessors, or selection with at least ten items, forbidden pairs
+and prerequisites. These are fixed prior rules, not evaluation-learned thresholds.
+\item Without risk, request one proposal. Finish if its schema is valid and it
+reports no specific unresolved issues; otherwise request a final review.
+\item With risk, request two independent proposals concurrently. If both satisfy
+the contract, report no issues, and match exactly after JSON key sorting, finish
+without an integrator. Agreement does not establish correctness.
+\item For disagreement, invalid shape or unresolved issues, an adjudicator checks
+candidates against the original data and returns the final answer.
+\end{enumerate}
+
+The gate checks key sets, types and structure. It does not solve the task, execute
+SQL or inspect references or fixtures. An incorrect integer duration, for example,
+can pass this gate. Verbal confidence is not treated as a truth score. The
+adjudicator receives no evaluator feedback and can be wrong. There is no selective
+retry until a correct answer appears.
+
+Let $q$ be the fraction of tasks triggering two solvers, $v$ the review rate on
+the direct path, and $a$ the adjudication rate on the parallel path. With no
+transport failures, mean call count is
+\[
+\mathbb{E}[N]=1+q+(1-q)v+qa.
+\]
+This equation describes measured mechanisms, not predicted accuracy. Parallel
+solver waiting time is approximately the maximum of their durations, not their
+sum; both solvers' tokens are still added. Avoiding an integrator removes one
+complete call, but is useful only if the result retains the required completion
+level.
+
+\subsection{Role assignment and skill distribution are different decisions}
+The adapter recognizes six closed-world interfaces from their fields rather than
+task IDs. It does not measure semantic skill-retrieval costs or errors in open-ended
+conversations.
+
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}p{32mm}p{28mm}X@{}}
+\toprule Public signal & Loaded skill & Responsibility \\ \midrule
+Events with revisions & Ledger & Revision selection, status and monetary sums. \\
+Participants & Calendar & Time zones and overlapping availability. \\
+Task list & Dependencies & Precedence, earliest starts and critical path. \\
+Candidate items & Selection & Budget, coverage and tie breakers. \\
+Events with sequence and scope & Memory & Confirmations, deletions and inheritance. \\
+SQL schema & SQL & Read-only queries and correct aggregation. \\
+\bottomrule
+\end{tabularx}\end{center}
+
+Workers for the same task need the same domain skill, even though their roles
+differ. We do not invent different skills per worker to suggest diversity.
+All ten original instruction bodies are reused unchanged. The four distractor
+skills are retained for ablations.
+
+\section{Experimental design}
+\subsection{Separate development and freezing}
+Before replication, ten new instances were tested: two from each non-SQL family,
+with seeds distinct from the original tasks. The serial policy reviewed risky
+tasks after a proposal; the parallel policy used two simultaneous solvers.
+Selection favored most strict successes, breaking ties by fewer tokens and then
+less time. SQL contracts were tested offline; there was no new live SQL pilot.
+Both candidates' results and resource use are reported separately.
+
+The protocol is local and precedes execution; it is not an independent
+preregistration. Code, prompts, limits and order were copied and hashed before each
+phase. A Python-tuple versus JSON-list comparison correction was made before the
+first evaluation call, without changing tasks or policy; its amendment is retained.
+The architecture did not change during final replication.
+
+\subsection{Tasks and paired comparison}
+The exact twelve original problems and their fixtures were repeated twice per
+condition. Each of six families contains two problems: ledgers with 18 events,
+calendars with three participants, eleven-node graphs, selecting four out of twelve
+items, memory with 24 events, and two SQL queries. Ten non-SQL tasks require exact
+matching; each query runs against three test databases hidden from agents, with
+read-only permissions.
+
+Nine conditions were run: single agent; the four original architectures; SAGE-CREH;
+hierarchy with ten skills; SAGE without delegation; and SAGE with ten skills.
+This yields 216 runs, 24 per condition. Task--repetition blocks and then conditions
+within each block were randomized with seed 20260914. Conditions did not execute
+concurrently; at most two calls could overlap within one flow.
+
+\subsection{Controls, limits and potential confounds}
+GPT-5.6 Luna, \texttt{low} reasoning effort, Responses API, JSON-object, non-streaming
+generation and a maximum of 1536 output tokens per call, including reasoning,
+were held fixed. Connection and read timeouts were 10 and 60 seconds; no transport
+retries; at most five calls overall and a 240-second deadline for starting another
+call. That deadline does not interrupt an HTTP request already underway.
+
+Original controls retain their prompts and ten-description catalog plus a skill
+body selected by family. SAGE omits the catalog and explicitly states JSON nesting,
+especially for SQL. Comparisons therefore change more than topology. Two controls
+help isolate effects: \textit{SAGE without delegation} retains its proposer and
+payload but always makes one call; \textit{SAGE with ten skills} retains policy and
+prompts while loading every body. The original hierarchy pair is also rerun.
+Maximum per-call budgets are identical, not the actual tokens consumed.
+
+\subsection{Measurement and analysis}
+Primary completion requires every field to be correct in the original JSON
+envelope. A predefined secondary v2 metric wraps a raw SQL string under
+\texttt{answer} into the nested \texttt{sql} field and applies the same evaluator.
+No SQL text is edited and no non-SQL answer is corrected. Primary scores are never
+repaired.
+
+Tokens sum provider-reported input and output across all calls, including
+supervision, critique, repeated context and observed failures. Cached input and
+reasoning are already part of those totals. Monotonic wall time includes
+coordination, network and traces through the final response, excluding grading.
+It is neither summed overlapping HTTP durations nor a throughput benchmark.
+
+Exploratory 95\% percentile intervals use 10000 paired task-cluster bootstrap
+draws, keeping both repetitions and all conditions together. Completion, token
+and time differences and token ratios are reported. Twelve distinct tasks are
+not 216 independent tasks. Degenerate intervals at a ceiling do not establish
+perfect reliability.
+
+\input{results.tex}
+\section{Interpretation and application}
+\input{takeaway.tex}
+The evaluated proposal retains a path without subagents and uses redundancy only
+for part of the workflow. It does not include browsing, terminal interaction,
+external tools, persistent memory, write coordination or production permissions.
+A deployed implementation must replace or extend the contract adapter with skill
+retrieval, retrieval-error measurement and role-specific authority limits.
+
+Architecture choice should separate solver sufficiency, risk detection,
+instruction delivery and transfer costs. A fixed integrator consumes resources
+even when workers agree; early exit can avoid that step, but can also accept a
+shared error. More roles or different skill labels do not create statistical
+independence between responses from the same model.
+
+\section{Validity and reproducibility}
+Final tasks were already known when designing SAGE: this is a development-informed
+paired replication, not a blind generalization test. Fresh development seeds do
+not remove knowledge of task families or prior failures. The sample is small and
+synthetic, with one model, two repetitions and short contexts; ceiling effects
+and provider/network fluctuations remain. RAM, complete-project success and
+equal budgets per correct response are not measured.
+
+The package contains both waves separately, development attempts, policy decision,
+frozen code, protocols, tasks, evaluator references, visible per-call traces, CSV,
+XLSX and bilingual LaTeX sources. It contains no credentials or private deliberation.
+Credentials were loaded from an authorized local file outside the public package.
+Historical measurements do not substitute for replication controls and are not
+pooled with them to estimate latency.
+
+\input{historical.tex}
+\input{references.tex}
+\end{document}

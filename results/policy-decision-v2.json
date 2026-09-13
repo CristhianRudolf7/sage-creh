@@ -1,0 +1,26 @@
+{
+  "decided_at": "2026-09-13T15:00:53.270299+00:00",
+  "rule": "most strict successes, then lowest mean tokens, then lowest mean wall seconds",
+  "policy": "parallel",
+  "candidates": [
+    {
+      "condition": "sage_serial",
+      "runs": 10,
+      "successes": 9,
+      "mean_tokens": 1606.7,
+      "mean_seconds": 9.06734272899339
+    },
+    {
+      "condition": "sage_parallel",
+      "runs": 10,
+      "successes": 10,
+      "mean_tokens": 1628.4,
+      "mean_seconds": 8.1126987318974
+    }
+  ],
+  "development_tokens": 32351,
+  "development_calls": 28,
+  "development_runs": 20,
+  "development_finished_at": "2026-09-13T15:00:23.033985+00:00",
+  "evidence_sha256": "055a1c97224af9d1edde8c84e3a70f5818a3fd28586fbea3f89a02b9bfafa9fc"
+}

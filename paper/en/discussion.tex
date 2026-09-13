@@ -1,0 +1,42 @@
+\section{Choosing a subagent architecture}
+\input{takeaway.tex}
+
+\subsection{A master agent with optional delegation}
+An adaptive coordinator can choose between direct execution and delegation. The master interprets the request, maintains the active objective and integrates worker results. Delegation is an available operation, not a mandatory stage for every message. This conditional architecture is a recommendation derived from the trade-offs; its routing policy was not trained or benchmarked here.
+
+For a two-worker fan-out, an approximate latency decomposition is
+\begin{equation}
+W_{\mathrm{team}}\approx W_{\mathrm{plan}}+\max(W_1,W_2)+W_{\mathrm{merge}},
+\end{equation}
+whereas total tokens add across planner, both workers and merger. Concurrency only shortens the overlapping portion of the critical path. A useful delegation decision should therefore consider separable work, required handoffs and expected duration, not just the existence of multiple subtasks. Small direct actions may have too little work to amortize coordination.
+
+An initial implementation could permit one delegation level and two concurrent workers, retaining a configurable ceiling. These values describe a manageable starting design, not an experimentally proven optimum. Increasing team size, introducing peer negotiation or mixing model sizes would require separate controlled measurements.
+
+\subsection{Skill and context assignment}
+The master should discover the complete metadata catalog while workers initially load the instructions relevant to their assignment. Each worker can request further permitted resources when the initial package proves insufficient. This preserves discoverability without copying every instruction into every request. The experiment's label-based selection is easier than that real routing problem, so its token savings are not a guarantee for a deployed selector.
+
+A practical handoff can contain \texttt{task\_id}, \texttt{parent\_task\_id}, objective, input references, selected skill versions, allowed tools, dependencies and the expected result shape. The response should separate completed work, artifacts, unresolved facts and blockers. These fields organize execution and auditability; they do not require another model call to restate a formal proof for every action.
+
+The experimental workers received the full original task to keep evidence access comparable. Production context scoping is a subsequent design change: supply task-specific evidence and relevant recent instructions, with retrievable references for omitted material. It must be evaluated for both reduced context and increased failures from missing information. The present results cannot establish that a smaller context is always sufficient.
+
+\subsection{Runtime responsibilities}
+Workers can be scheduled as asynchronous tasks sharing provider clients and storage connections. A process is needed only when an invoked tool actually requires one. This avoids equating an agent with a full operating-system process, but host memory was not measured in this study and no RAM reduction is claimed.
+
+The scheduler should bound worker concurrency, propagate cancellation and preserve dependency order. A master waiting for children must not monopolize the only execution slot they need; orchestration and worker scheduling require compatible admission rules. Worker permissions cannot exceed the parent's grants, and conflicting writes require coordination rather than unrestricted simultaneous mutation.
+
+The coordinator can expose delegation, status, communication and cancellation through a small runtime interface. Escalation of unresolved decisions to the coordinator preserves a clear responsibility boundary. Ordinary typed tool results and error handling remain engine responsibilities. A model critic, as evaluated in the reflexive condition, is an optional extra computation whose value must be demonstrated for the workload.
+
+\section{Limits, reproducibility and next experiment}
+The task set is small, synthetic and designed for this study. Short, fully supplied inputs favor direct solving and do not exercise document retrieval, terminal actions, multi-file code changes or long-running failure recovery. Only one model and reasoning setting were used, with two repetitions per instance. Provider caching, request scheduling and same-day network conditions affect measured latency. Equal maximum call limits do not produce an equal-compute comparison.
+
+The post-hoc SQL-format sensitivity is necessary to interpret the primary errors, but it is not a second preregistered endpoint. It changes only the wrapper of an existing string and preserves the original strict scores. It cannot correct SQL logic, answer content or infrastructure failures. Its interpretation must remain separate from the frozen primary analysis.
+
+The released bundle includes the task generators, exact prompts, ten procedural skills, evaluators, local protocol, source hashes, randomized order, visible responses, usage, timestamps, CSV/XLSX tables and both LaTeX versions. The source audit checks complete blocks and reconciles tokens per call with tokens per run. An editorial amendment register documents post-evaluation protocol prose changes without replacing historical hashes or modifying experimental settings. Credentials and private reasoning are excluded. The model alias may evolve, so the bundle reproduces the method and recorded analysis, not a deterministic remote service.
+
+A stronger next experiment should reserve real assistant tasks with external actions, longer contexts, explicit dependencies and conflicting writes; test more models; and compare adaptive delegation with direct execution at matched budgets. It should separately vary context scoping, skill discovery and team size. This study provides a reproducible starting measurement, not evidence that one fixed team design is universally best.
+
+\section{Conclusion}
+Architecture selection should consider delivered correctness, total inference and actual waiting time together. The comparison makes coordination overhead visible and shows why output-format compliance must be distinguished from solution quality. For the measured short tasks, direct execution is the most economical baseline. Among the multi-agent patterns, reflexive coordination uses the fewest tokens on average and parallel coordination has the lowest mean latency. No universal winner is established; adaptive, scoped delegation remains a hypothesis to test across workloads.
+
+\smallskip
+\textbf{Availability and status.} The bilingual paper and experimental bundle are available from \href{https://crehlabs.com/en/research/subagentes-arquitecturas-tokens-tiempo-2026/}{the CREH Labs research page}. This is an exploratory preprint without peer review. The benchmark was executed in an independent research harness and evaluates bounded coordination patterns.

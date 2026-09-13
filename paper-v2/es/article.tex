@@ -1,0 +1,216 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[spanish]{creh-article}
+\usepackage{array,tabularx}
+\setlength{\emergencystretch}{2em}
+\newcommand{\source}[2]{\footnote{\href{#1}{#2}.}}
+\begin{document}
+\ArticleTitle{PREPRINT / ESTUDIO EXPLORATORIO}{Coordinación de subagentes:\\SAGE-CREH y selección\\de skills}{13 de septiembre de 2026 / v2.0}
+\input{abstract.tex}
+\Keywords{subagentes; delegación adaptativa; skills; tokens; tiempo; evaluación emparejada.}
+
+\section{Pregunta de investigación}
+La unidad de diseño estudiada no es el modelo, sino la organización de sus llamadas:
+quién resuelve, quién revisa, cuándo se delega y qué instrucciones recibe cada rol.
+Manteniendo el modelo fijo, se pregunta si una quinta arquitectura adaptativa puede
+conservar el cumplimiento de las cuatro arquitecturas originales con menos
+coordinación. Se distinguen tres objetivos: resolver la tarea completa, consumir
+menos tokens agregados y reducir la espera del usuario. Ninguno sustituye a los otros.
+
+La versión 1 comparó flujos secuencial, paralelo, jerárquico y reflexivo con un
+agente único y una ablación de skills. La versión 2 implementa SAGE-CREH, evalúa
+dos políticas en desarrollo y vuelve a ejecutar todos los controles. La contribución
+es esta implementación acotada con evidencia reproducible, no una prueba de
+superioridad universal ni la invención de la delegación selectiva.
+
+\input{literature.tex}
+\subsection{Tres referencias adicionales para la arquitectura adaptativa}
+Uno-Orchestra combina descomposición selectiva y delegación mediante una política
+aprendida. Inspira decidir cuándo merece la pena delegar; aquí no se reproduce su
+entrenamiento.\source{https://arxiv.org/html/2605.05007v1}{Cui et al., 2026}
+ProgRouter orienta decisiones de ejecución por progreso, tiempo y coste. Nuestra
+compuerta no es su predictor aprendido ni selecciona entre modelos.\source{https://arxiv.org/html/2608.25992v1}{Li, Abdelmoniem y Wang, 2026}
+TROVE conserva continuaciones válidas y modifica rutas ante evidencia intermedia.
+Aquí se adopta una revisión condicional simple, sin su grafo de skills aprendido
+offline.\source{https://arxiv.org/html/2609.05019v1}{T. Wang et al., 2026}
+La revisión ampliada reúne doce papers de arXiv; se mantienen las versiones
+identificadas, sin combinar sus puntuaciones con este experimento.
+
+\section{Las cinco arquitecturas y la referencia individual}
+Todos los agentes son llamadas sin estado al mismo modelo. Un rol distinto no
+significa pesos entrenados distintos. Los traspasos contienen respuestas visibles,
+hallazgos o dudas, nunca razonamiento privado. Cada llamada recibe la tarea pública
+completa; no se evalúa partición de observaciones ni contexto de producción reducido.
+
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}p{25mm}Xr@{}}
+\toprule Patrón & Implementación & Llamadas \\ \midrule
+Individual & Un resolutor entrega la respuesta. & 1 \\
+Secuencial & Extracción de evidencia, solución e integración, en tres etapas. & 3 \\
+Paralelo & Dos especialistas complementarios simultáneos y un integrador. & 3 \\
+Jerárquico & Supervisor planifica uno o dos encargos, trabajadores simultáneos, integración. & 3--4 \\
+Reflexivo & Propuesta y crítica; revisión si hay objeciones, máximo dos rondas. & 2--5 \\
+SAGE-CREH & Vía directa o dos resolutores; revisión solo por señales definidas. & 1--3 \\
+\bottomrule
+\end{tabularx}\end{center}
+
+\subsection{SAGE-CREH: ejecución con selección de skills y compuertas}
+Un coordinador determinista ligero enruta por la estructura pública de la tarea.
+No utiliza una llamada de planificación previa. Selecciona un skill y decide si
+corresponde una sola propuesta o dos resolutores completos simultáneos. El segundo
+prioriza restricciones, dependencias y desempates; no ve la primera propuesta.
+Esta redundancia adaptativa difiere del reparto complementario fijo del patrón
+paralelo original.
+
+\begin{enumerate}
+\item Identificar el contrato público y cargar únicamente sus instrucciones pertinentes.
+\item Marcar riesgo estructural si hay al menos ocho nodos y algún nodo con dos o
+más predecesores; o al menos diez elementos de selección con incompatibilidades
+y prerrequisitos. Son reglas previas fijas, no umbrales aprendidos durante evaluación.
+\item Sin riesgo, pedir una propuesta. Si cumple el esquema y no declara dudas
+concretas, terminar. En caso contrario, pedir una revisión final.
+\item Con riesgo, pedir dos propuestas independientes a la vez. Si ambas cumplen
+el contrato, no declaran dudas y coinciden exactamente tras ordenar claves JSON,
+terminar sin integrador. Coincidir no demuestra corrección.
+\item Ante discrepancia, formato inválido o dudas, un árbitro vuelve a comprobar
+los candidatos contra los datos originales y entrega la respuesta final.
+\end{enumerate}
+
+La compuerta comprueba claves, tipos y estructura; no calcula la solución, no
+ejecuta SQL y no consulta referencias o fixtures. Por ejemplo, una duración
+entera incorrecta puede atravesarla. La confianza verbal no se usa como puntuación
+de verdad. El árbitro no recibe calificaciones del evaluador y puede equivocarse.
+No hay reintentos selectivos hasta obtener una respuesta correcta.
+
+Si $q$ es la fracción de tareas que activa dos resolutores, $v$ la proporción de
+revisión en la vía directa y $a$ la de arbitraje en la vía paralela, el número
+medio de llamadas, sin fallos de transporte, es
+\[
+\mathbb{E}[N]=1+q+(1-q)v+qa.
+\]
+La fórmula expresa los mecanismos medidos, no una predicción de exactitud. En la
+vía paralela la espera de los resolutores es aproximadamente el máximo de sus
+duraciones, no su suma; los tokens de ambos sí se suman. Ahorrar un integrador
+reduce una llamada completa, pero solo es defendible si el resultado conserva
+el nivel de cumplimiento requerido.
+
+\subsection{Repartir roles y skills son decisiones distintas}
+El adaptador reconoce estas interfaces cerradas por sus campos, no por el
+identificador de la tarea. No mide el coste ni los errores de recuperación
+semántica de skills desde una conversación abierta.
+
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}p{32mm}p{28mm}X@{}}
+\toprule Señal pública & Skill cargado & Responsabilidad \\ \midrule
+Eventos con revisión & Registros & Revisiones, estado y sumas monetarias. \\
+Participantes & Calendario & Zonas horarias e intersección de disponibilidad. \\
+Lista de tareas & Dependencias & Precedencias, inicios y camino crítico. \\
+Elementos candidatos & Selección & Presupuesto, cobertura y desempates. \\
+Eventos con secuencia y ámbito & Memoria & Confirmaciones, borrados y herencia. \\
+Esquema SQL & SQL & Consulta de solo lectura y agregación correcta. \\
+\bottomrule
+\end{tabularx}\end{center}
+
+Todos los trabajadores de una tarea necesitan el mismo skill temático; sus roles
+son diferentes. No se inventan skills distintos por agente para simular diversidad.
+Se reutilizan sin cambios los cuerpos de las diez instrucciones originales.
+Los cuatro skills distractores también se conservan para las ablaciones.
+
+\section{Diseño experimental}
+\subsection{Desarrollo separado y congelación}
+Antes de la réplica se probaron diez instancias nuevas: dos por cada familia no
+SQL, con semillas distintas de las originales. La política serial revisaba las
+tareas de riesgo después de una propuesta; la paralela empleaba dos resolutores
+simultáneos. Se decidió por mayor cumplimiento estricto, desempate por menos tokens
+y después menor tiempo. Los contratos SQL se comprobaron offline; no hubo piloto
+SQL vivo nuevo. El resultado y coste de ambos candidatos se presentan por separado.
+
+El protocolo es local y previo a la ejecución, no un prerregistro independiente.
+Código, prompts, límites y orden se copiaron y hashearon antes de cada fase.
+Una corrección de comparación entre tuplas Python y listas JSON se hizo antes
+de la primera llamada de evaluación, sin cambiar tareas ni política. Se conserva
+la nota de cambio. No se modificó la arquitectura durante la réplica final.
+
+\subsection{Tareas y comparación emparejada}
+Se repitieron exactamente los doce problemas originales y sus fixtures, dos veces
+por condición. Cada una de seis familias contiene dos problemas: registros con
+18 eventos, agenda de tres participantes, grafos de once nodos, selección de cuatro
+entre doce elementos, memoria de 24 eventos y dos consultas SQL. Las diez tareas
+no SQL requieren coincidencia exacta; cada consulta se ejecuta sobre tres bases
+de prueba ocultas para los agentes, con permisos de solo lectura.
+
+Se ejecutaron nueve condiciones: agente único; las cuatro arquitecturas originales;
+SAGE-CREH; jerarquía con diez skills; SAGE sin delegación; y SAGE con diez skills.
+Son 216 ejecuciones, 24 por condición. Se aleatorizaron bloques tarea--repetición
+y condiciones dentro de cada bloque, con semilla 20260914. No se ejecutaron
+condiciones simultáneamente; dentro de cada flujo se permitieron dos llamadas paralelas.
+
+\subsection{Controles, límites y posibles factores de confusión}
+Se mantuvo GPT-5.6 Luna, esfuerzo \texttt{low}, Responses API, JSON-object, sin
+streaming y máximo 1536 tokens de salida por llamada, incluido razonamiento.
+Timeout de conexión de 10 segundos y lectura de 60; cero reintentos de transporte;
+máximo general de cinco llamadas y límite de 240 segundos para iniciar otra
+llamada. Este último no interrumpe una petición HTTP ya iniciada.
+
+Los controles originales conservan prompts y catálogo de diez descripciones más
+un cuerpo de skill seleccionado por familia. SAGE omite el catálogo y explicita
+el anidamiento JSON, especialmente SQL. Por tanto, compararlo con los originales
+cambia más que la topología. Para aislar efectos se añaden dos controles:
+\textit{SAGE sin delegación}, mismo proponente y payload pero siempre una llamada;
+y \textit{SAGE con diez skills}, misma política y prompts, todos los cuerpos.
+La pareja jerárquica original también se vuelve a ejecutar. Los presupuestos
+máximos por llamada son iguales, no los tokens realmente consumidos.
+
+\subsection{Medición y análisis}
+El cumplimiento primario exige todos los campos correctos en el sobre JSON
+original. Como métrica secundaria predefinida para v2, si SQL aparece como cadena
+directa dentro de \texttt{answer}, se envuelve esa misma cadena en el campo
+\texttt{sql} y se aplica el mismo evaluador. No se edita SQL ni se corrigen
+respuestas no SQL. La métrica primaria nunca se repara.
+
+Los tokens son la suma de entrada y salida informadas por todas las llamadas,
+incluidos supervisión, crítica, contexto repetido y fallos observados. Entrada
+cacheada y razonamiento ya pertenecen a esas cantidades. El tiempo monotónico
+incluye coordinación, red y trazas hasta la respuesta final; excluye calificación.
+No es la suma de las duraciones HTTP solapadas ni un benchmark de throughput.
+
+Se estiman intervalos percentiles exploratorios del 95\% con 10000 remuestreos
+emparejados por tarea, manteniendo juntas ambas repeticiones y condiciones.
+Se informan diferencias de cumplimiento, tokens y tiempo y razones de consumo.
+Doce tareas distintas no equivalen a 216 tareas independientes. Los intervalos
+degenerados al alcanzar el techo no prueban fiabilidad perfecta.
+
+\input{results.tex}
+\section{Interpretación y aplicación}
+\input{takeaway.tex}
+La propuesta evaluada conserva una vía sin subagentes y utiliza redundancia solo
+en una parte del flujo. No incluye navegación, terminal, herramientas externas,
+memoria persistente, control de escrituras ni permisos de producción. Para una
+implementación real, el adaptador de contratos debe reemplazarse o ampliarse con
+recuperación de skills, medición de sus errores y límites de autoridad por rol.
+
+La decisión de arquitectura debe separar suficiencia del resolutor, detección de
+riesgo, entrega de instrucciones y coste de transferencia. Un integrador fijo
+consume incluso cuando los trabajadores coinciden; una salida anticipada puede
+ahorrar ese paso, pero también aceptar un error compartido. Más roles o una
+etiqueta de skill distinta no crean independencia estadística entre respuestas
+del mismo modelo.
+
+\section{Validez y reproducibilidad}
+Las tareas finales ya se conocían al diseñar SAGE: esto es una réplica emparejada
+informada por desarrollo, no una prueba a ciegas de generalización. Las semillas
+de desarrollo distintas no eliminan el conocimiento de las familias ni de los
+errores del estudio anterior. La muestra es sintética y pequeña, con un solo
+modelo, dos repeticiones y contextos cortos; hay efectos techo y posibles
+fluctuaciones de proveedor o red. No se mide RAM, éxito en proyectos completos
+ni presupuesto igualado por respuesta correcta.
+
+El paquete contiene las dos tandas separadas, los intentos de desarrollo, decisión
+de política, código congelado, protocolos, tareas, referencias del evaluador,
+trazas visibles por llamada, CSV, XLSX y fuentes LaTeX bilingües. No contiene
+credenciales ni razonamiento privado. Las claves se cargaron de un archivo local
+autorizado, ajeno al paquete público. Las cifras históricas no sustituyen controles
+de la réplica ni se mezclan con ellos para estimar latencia.
+
+\input{historical.tex}
+\input{references.tex}
+\end{document}

@@ -1,0 +1,1445 @@
+[
+  {
+    "id": "DEV11",
+    "family": "ledger",
+    "public": {
+      "request": "Keep only the greatest revision per id, then sum posted USD events. Include all three projects. Return {totals_cents:{atlas:int,boreal:int,cedar:int}, total_cents:int, event_count:int}.",
+      "events": [
+        {
+          "id": "E14",
+          "revision": 1,
+          "project": "boreal",
+          "amount_cents": 550,
+          "currency": "USD",
+          "status": "posted"
+        },
+        {
+          "id": "E12",
+          "revision": 1,
+          "project": "cedar",
+          "amount_cents": 3825,
+          "currency": "PEN",
+          "status": "posted"
+        },
+        {
+          "id": "E17",
+          "revision": 1,
+          "project": "cedar",
+          "amount_cents": 1950,
+          "currency": "USD",
+          "status": "posted"
+        },
+        {
+          "id": "E13",
+          "revision": 1,
+          "project": "atlas",
+          "amount_cents": -1550,
+          "currency": "USD",
+          "status": "posted"
+        },
+        {
+          "id": "E10",
+          "revision": 1,
+          "project": "boreal",
+          "amount_cents": 1350,
+          "currency": "USD",
+          "status": "pending"
+        },
+        {
+          "id": "E09",
+          "revision": 1,
+          "project": "atlas",
+          "amount_cents": 600,
+          "currency": "USD",
+          "status": "posted"
+        },
+        {
+          "id": "E06",
+          "revision": 1,
+          "project": "cedar",
+          "amount_cents": 2475,
+          "currency": "USD",
+          "status": "posted"
+        },
+        {
+          "id": "E06",
+          "revision": 2,
+          "project": "cedar",
+          "amount_cents": 2850,
+          "currency": "USD",
+          "status": "posted"
+        },
+        {
+          "id": "E05",
+          "revision": 1,
+          "project": "boreal",
+          "amount_cents": 4050,
+          "currency": "USD",
+          "status": "pending"
+        },
+        {
+          "id": "E11",
+          "revision": 1,
+          "project": "atlas",
+          "amount_cents": -25,
+          "currency": "USD",
+          "status": "posted"
+        },
+        {
+          "id": "E12",
+          "revision": 2,
+          "project": "cedar",
+          "amount_cents": 4200,
+          "currency": "PEN",
+          "status": "posted"
+        },
+        {
+          "id": "E00",
+          "revision": 1,
+          "project": "cedar",
+          "amount_cents": -325,
+          "currency": "PEN",
+          "status": "pending"
+        },
+        {
+          "id": "E15",
+          "revision": 2,
+          "project": "atlas",
+          "amount_cents": -750,
+          "currency": "USD",
+          "status": "void"
+        },
+        {
+          "id": "E01",
+          "revision": 1,
+          "project": "boreal",
+          "amount_cents": -700,
+          "currency": "USD",
+          "status": "posted"
+        },
+        {
+          "id": "E15",
+          "revision": 1,
+          "project": "atlas",
+          "amount_cents": -1125,
+          "currency": "USD",
+          "status": "pending"
+        },
+        {
+          "id": "E08",
+          "revision": 1,
+          "project": "atlas",
+          "amount_cents": 4200,
+          "currency": "PEN",
+          "status": "posted"
+        },
+        {
+          "id": "E03",
+          "revision": 2,
+          "project": "cedar",
+          "amount_cents": 3750,
+          "currency": "USD",
+          "status": "void"
+        },
+        {
+          "id": "E16",
+          "revision": 1,
+          "project": "boreal",
+          "amount_cents": -325,
+          "currency": "PEN",
+          "status": "posted"
+        },
+        {
+          "id": "E02",
+          "revision": 1,
+          "project": "atlas",
+          "amount_cents": 3825,
+          "currency": "USD",
+          "status": "posted"
+        },
+        {
+          "id": "E09",
+          "revision": 2,
+          "project": "atlas",
+          "amount_cents": 975,
+          "currency": "USD",
+          "status": "void"
+        },
+        {
+          "id": "E07",
+          "revision": 1,
+          "project": "boreal",
+          "amount_cents": 3250,
+          "currency": "USD",
+          "status": "posted"
+        },
+        {
+          "id": "E00",
+          "revision": 2,
+          "project": "cedar",
+          "amount_cents": 50,
+          "currency": "PEN",
+          "status": "posted"
+        },
+        {
+          "id": "E04",
+          "revision": 1,
+          "project": "cedar",
+          "amount_cents": 50,
+          "currency": "PEN",
+          "status": "posted"
+        },
+        {
+          "id": "E03",
+          "revision": 1,
+          "project": "cedar",
+          "amount_cents": 3375,
+          "currency": "USD",
+          "status": "posted"
+        }
+      ]
+    },
+    "expected": {
+      "totals_cents": {
+        "atlas": 2250,
+        "boreal": 3100,
+        "cedar": 4800
+      },
+      "total_cents": 10150,
+      "event_count": 8
+    },
+    "sql_fixtures": null
+  },
+  {
+    "id": "DEV12",
+    "family": "ledger",
+    "public": {
+      "request": "Keep only the greatest revision per id, then sum posted USD events. Include all three projects. Return {totals_cents:{atlas:int,boreal:int,cedar:int}, total_cents:int, event_count:int}.",
+      "events": [
+        {
+          "id": "E12",
+          "revision": 2,
+          "project": "atlas",
+          "amount_cents": 3475,
+          "currency": "PEN",
+          "status": "posted"
+        },
+        {
+          "id": "E03",
+          "revision": 1,
+          "project": "boreal",
+          "amount_cents": 1525,
+          "currency": "USD",
+          "status": "posted"
+        },
+        {
+          "id": "E00",
+          "revision": 1,
+          "project": "atlas",
+          "amount_cents": 1550,
+          "currency": "PEN",
+          "status": "pending"
+        },
+        {
+          "id": "E01",
+          "revision": 1,
+          "project": "cedar",
+          "amount_cents": 1300,
+          "currency": "USD",
+          "status": "posted"
+        },
+        {
+          "id": "E11",
+          "revision": 1,
+          "project": "cedar",
+          "amount_cents": 575,
+          "currency": "USD",
+          "status": "posted"
+        },
+        {
+          "id": "E04",
+          "revision": 1,
+          "project": "boreal",
+          "amount_cents": 1750,
+          "currency": "PEN",
+          "status": "posted"
+        },
+        {
+          "id": "E09",
+          "revision": 1,
+          "project": "atlas",
+          "amount_cents": 3650,
+          "currency": "USD",
+          "status": "posted"
+        },
+        {
+          "id": "E13",
+          "revision": 1,
+          "project": "boreal",
+          "amount_cents": 3200,
+          "currency": "USD",
+          "status": "posted"
+        },
+        {
+          "id": "E06",
+          "revision": 1,
+          "project": "boreal",
+          "amount_cents": 225,
+          "currency": "USD",
+          "status": "posted"
+        },
+        {
+          "id": "E16",
+          "revision": 1,
+          "project": "boreal",
+          "amount_cents": 4275,
+          "currency": "PEN",
+          "status": "posted"
+        },
+        {
+          "id": "E09",
+          "revision": 2,
+          "project": "atlas",
+          "amount_cents": 4025,
+          "currency": "USD",
+          "status": "void"
+        },
+        {
+          "id": "E06",
+          "revision": 2,
+          "project": "boreal",
+          "amount_cents": 600,
+          "currency": "USD",
+          "status": "posted"
+        },
+        {
+          "id": "E00",
+          "revision": 2,
+          "project": "atlas",
+          "amount_cents": 1925,
+          "currency": "PEN",
+          "status": "posted"
+        },
+        {
+          "id": "E03",
+          "revision": 2,
+          "project": "boreal",
+          "amount_cents": 1900,
+          "currency": "USD",
+          "status": "void"
+        },
+        {
+          "id": "E07",
+          "revision": 1,
+          "project": "atlas",
+          "amount_cents": 2650,
+          "currency": "USD",
+          "status": "posted"
+        },
+        {
+          "id": "E14",
+          "revision": 1,
+          "project": "boreal",
+          "amount_cents": -750,
+          "currency": "USD",
+          "status": "posted"
+        },
+        {
+          "id": "E12",
+          "revision": 1,
+          "project": "atlas",
+          "amount_cents": 3100,
+          "currency": "PEN",
+          "status": "posted"
+        },
+        {
+          "id": "E15",
+          "revision": 1,
+          "project": "boreal",
+          "amount_cents": 675,
+          "currency": "USD",
+          "status": "pending"
+        },
+        {
+          "id": "E05",
+          "revision": 1,
+          "project": "atlas",
+          "amount_cents": 1975,
+          "currency": "USD",
+          "status": "pending"
+        },
+        {
+          "id": "E10",
+          "revision": 1,
+          "project": "boreal",
+          "amount_cents": -1450,
+          "currency": "USD",
+          "status": "pending"
+        },
+        {
+          "id": "E08",
+          "revision": 1,
+          "project": "boreal",
+          "amount_cents": -125,
+          "currency": "PEN",
+          "status": "posted"
+        },
+        {
+          "id": "E15",
+          "revision": 2,
+          "project": "boreal",
+          "amount_cents": 1050,
+          "currency": "USD",
+          "status": "void"
+        },
+        {
+          "id": "E17",
+          "revision": 1,
+          "project": "atlas",
+          "amount_cents": 2200,
+          "currency": "USD",
+          "status": "posted"
+        },
+        {
+          "id": "E02",
+          "revision": 1,
+          "project": "boreal",
+          "amount_cents": 4175,
+          "currency": "USD",
+          "status": "posted"
+        }
+      ]
+    },
+    "expected": {
+      "totals_cents": {
+        "atlas": 4850,
+        "boreal": 7225,
+        "cedar": 1875
+      },
+      "total_cents": 13950,
+      "event_count": 8
+    },
+    "sql_fixtures": null
+  },
+  {
+    "id": "DEV21",
+    "family": "schedule",
+    "public": {
+      "request": "Find the earliest common meeting on 2026-09-14 inside the organizer's 09:00–16:00 Lima window (UTC-05:00). Busy intervals are half-open. Use the fixed offsets supplied, no external calendar. Return {start_local:HH:MM,end_local:HH:MM}, or null if impossible.",
+      "duration_minutes": 45,
+      "participants": [
+        {
+          "name": "Lima",
+          "utc_offset_minutes": -300,
+          "busy_local": [
+            [
+              "12:00",
+              "12:45"
+            ],
+            [
+              "11:15",
+              "12:15"
+            ],
+            [
+              "13:00",
+              "13:30"
+            ]
+          ]
+        },
+        {
+          "name": "Lisbon",
+          "utc_offset_minutes": 60,
+          "busy_local": [
+            [
+              "16:15",
+              "17:00"
+            ],
+            [
+              "18:00",
+              "19:00"
+            ],
+            [
+              "17:15",
+              "17:45"
+            ]
+          ]
+        },
+        {
+          "name": "New York",
+          "utc_offset_minutes": -240,
+          "busy_local": [
+            [
+              "14:00",
+              "15:00"
+            ],
+            [
+              "12:00",
+              "13:00"
+            ],
+            [
+              "12:15",
+              "12:45"
+            ]
+          ]
+        }
+      ]
+    },
+    "expected": {
+      "start_local": "09:00",
+      "end_local": "09:45"
+    },
+    "sql_fixtures": null
+  },
+  {
+    "id": "DEV22",
+    "family": "schedule",
+    "public": {
+      "request": "Find the earliest common meeting on 2026-09-14 inside the organizer's 09:00–16:00 Lima window (UTC-05:00). Busy intervals are half-open. Use the fixed offsets supplied, no external calendar. Return {start_local:HH:MM,end_local:HH:MM}, or null if impossible.",
+      "duration_minutes": 60,
+      "participants": [
+        {
+          "name": "Lima",
+          "utc_offset_minutes": -300,
+          "busy_local": [
+            [
+              "11:00",
+              "11:45"
+            ],
+            [
+              "12:45",
+              "13:45"
+            ],
+            [
+              "10:45",
+              "11:15"
+            ]
+          ]
+        },
+        {
+          "name": "Lisbon",
+          "utc_offset_minutes": 60,
+          "busy_local": [
+            [
+              "18:00",
+              "18:45"
+            ],
+            [
+              "19:45",
+              "20:45"
+            ],
+            [
+              "17:30",
+              "18:30"
+            ]
+          ]
+        },
+        {
+          "name": "New York",
+          "utc_offset_minutes": -240,
+          "busy_local": [
+            [
+              "14:00",
+              "14:45"
+            ],
+            [
+              "11:30",
+              "12:30"
+            ],
+            [
+              "12:45",
+              "13:30"
+            ]
+          ]
+        }
+      ]
+    },
+    "expected": {
+      "start_local": "09:00",
+      "end_local": "10:00"
+    },
+    "sql_fixtures": null
+  },
+  {
+    "id": "DEV31",
+    "family": "dependencies",
+    "public": {
+      "request": "With unlimited workers and non-preemptive tasks, compute earliest starts and overall makespan from time zero. Return {earliest_start:{id:int,...},makespan:int,critical_path:[id,...]}. Break critical-path ties using the lexicographically smallest full id sequence.",
+      "tasks": [
+        {
+          "id": "K",
+          "duration": 6,
+          "predecessors": [
+            "C",
+            "I"
+          ]
+        },
+        {
+          "id": "I",
+          "duration": 5,
+          "predecessors": [
+            "B",
+            "D",
+            "F"
+          ]
+        },
+        {
+          "id": "A",
+          "duration": 9,
+          "predecessors": []
+        },
+        {
+          "id": "H",
+          "duration": 4,
+          "predecessors": [
+            "E"
+          ]
+        },
+        {
+          "id": "C",
+          "duration": 4,
+          "predecessors": [
+            "A",
+            "B"
+          ]
+        },
+        {
+          "id": "B",
+          "duration": 9,
+          "predecessors": [
+            "A"
+          ]
+        },
+        {
+          "id": "F",
+          "duration": 12,
+          "predecessors": [
+            "A",
+            "B"
+          ]
+        },
+        {
+          "id": "E",
+          "duration": 11,
+          "predecessors": [
+            "C"
+          ]
+        },
+        {
+          "id": "J",
+          "duration": 12,
+          "predecessors": [
+            "B",
+            "D"
+          ]
+        },
+        {
+          "id": "D",
+          "duration": 10,
+          "predecessors": [
+            "A"
+          ]
+        },
+        {
+          "id": "G",
+          "duration": 11,
+          "predecessors": [
+            "F"
+          ]
+        }
+      ]
+    },
+    "expected": {
+      "earliest_start": {
+        "A": 0,
+        "B": 9,
+        "C": 18,
+        "D": 9,
+        "E": 22,
+        "F": 18,
+        "G": 30,
+        "H": 33,
+        "I": 30,
+        "J": 19,
+        "K": 35
+      },
+      "makespan": 41,
+      "critical_path": [
+        "A",
+        "B",
+        "F",
+        "G"
+      ]
+    },
+    "sql_fixtures": null
+  },
+  {
+    "id": "DEV32",
+    "family": "dependencies",
+    "public": {
+      "request": "With unlimited workers and non-preemptive tasks, compute earliest starts and overall makespan from time zero. Return {earliest_start:{id:int,...},makespan:int,critical_path:[id,...]}. Break critical-path ties using the lexicographically smallest full id sequence.",
+      "tasks": [
+        {
+          "id": "A",
+          "duration": 8,
+          "predecessors": []
+        },
+        {
+          "id": "G",
+          "duration": 13,
+          "predecessors": [
+            "A",
+            "C",
+            "E"
+          ]
+        },
+        {
+          "id": "E",
+          "duration": 8,
+          "predecessors": [
+            "C"
+          ]
+        },
+        {
+          "id": "H",
+          "duration": 4,
+          "predecessors": [
+            "B"
+          ]
+        },
+        {
+          "id": "C",
+          "duration": 8,
+          "predecessors": [
+            "A"
+          ]
+        },
+        {
+          "id": "I",
+          "duration": 5,
+          "predecessors": [
+            "E",
+            "F",
+            "H"
+          ]
+        },
+        {
+          "id": "B",
+          "duration": 4,
+          "predecessors": [
+            "A"
+          ]
+        },
+        {
+          "id": "D",
+          "duration": 7,
+          "predecessors": [
+            "A",
+            "B"
+          ]
+        },
+        {
+          "id": "J",
+          "duration": 5,
+          "predecessors": [
+            "C",
+            "G",
+            "H"
+          ]
+        },
+        {
+          "id": "F",
+          "duration": 10,
+          "predecessors": [
+            "A",
+            "B"
+          ]
+        },
+        {
+          "id": "K",
+          "duration": 2,
+          "predecessors": [
+            "A",
+            "J"
+          ]
+        }
+      ]
+    },
+    "expected": {
+      "earliest_start": {
+        "A": 0,
+        "B": 8,
+        "C": 8,
+        "D": 12,
+        "E": 16,
+        "F": 12,
+        "G": 24,
+        "H": 12,
+        "I": 24,
+        "J": 37,
+        "K": 42
+      },
+      "makespan": 44,
+      "critical_path": [
+        "A",
+        "C",
+        "E",
+        "G",
+        "J",
+        "K"
+      ]
+    },
+    "sql_fixtures": null
+  },
+  {
+    "id": "DEV41",
+    "family": "selection",
+    "public": {
+      "request": "Select exactly four items with total cost at most the budget, covering all three capabilities. Enforce forbidden pairs and directed prerequisites. Maximize total value, then minimize cost, then choose lexicographically smallest sorted ids. Return {ids:[...],total_cost:int,total_value:int}.",
+      "budget": 34,
+      "items": [
+        {
+          "id": "A",
+          "cost": 5,
+          "value": 28,
+          "capabilities": [
+            "storage"
+          ]
+        },
+        {
+          "id": "B",
+          "cost": 8,
+          "value": 8,
+          "capabilities": [
+            "compute"
+          ]
+        },
+        {
+          "id": "C",
+          "cost": 8,
+          "value": 20,
+          "capabilities": [
+            "network"
+          ]
+        },
+        {
+          "id": "D",
+          "cost": 5,
+          "value": 28,
+          "capabilities": [
+            "storage"
+          ]
+        },
+        {
+          "id": "E",
+          "cost": 12,
+          "value": 27,
+          "capabilities": [
+            "compute",
+            "network"
+          ]
+        },
+        {
+          "id": "F",
+          "cost": 9,
+          "value": 14,
+          "capabilities": [
+            "network"
+          ]
+        },
+        {
+          "id": "G",
+          "cost": 8,
+          "value": 26,
+          "capabilities": [
+            "storage"
+          ]
+        },
+        {
+          "id": "H",
+          "cost": 6,
+          "value": 8,
+          "capabilities": [
+            "compute"
+          ]
+        },
+        {
+          "id": "I",
+          "cost": 6,
+          "value": 14,
+          "capabilities": [
+            "network"
+          ]
+        },
+        {
+          "id": "J",
+          "cost": 8,
+          "value": 21,
+          "capabilities": [
+            "storage"
+          ]
+        },
+        {
+          "id": "K",
+          "cost": 11,
+          "value": 26,
+          "capabilities": [
+            "compute"
+          ]
+        },
+        {
+          "id": "L",
+          "cost": 4,
+          "value": 29,
+          "capabilities": [
+            "network"
+          ]
+        }
+      ],
+      "forbidden_pairs": [
+        [
+          "B",
+          "E"
+        ],
+        [
+          "H",
+          "K"
+        ]
+      ],
+      "prerequisites": {
+        "J": "A",
+        "L": "D"
+      }
+    },
+    "expected": {
+      "ids": [
+        "A",
+        "D",
+        "E",
+        "L"
+      ],
+      "total_cost": 26,
+      "total_value": 112
+    },
+    "sql_fixtures": null
+  },
+  {
+    "id": "DEV42",
+    "family": "selection",
+    "public": {
+      "request": "Select exactly four items with total cost at most the budget, covering all three capabilities. Enforce forbidden pairs and directed prerequisites. Maximize total value, then minimize cost, then choose lexicographically smallest sorted ids. Return {ids:[...],total_cost:int,total_value:int}.",
+      "budget": 34,
+      "items": [
+        {
+          "id": "A",
+          "cost": 14,
+          "value": 25,
+          "capabilities": [
+            "storage"
+          ]
+        },
+        {
+          "id": "B",
+          "cost": 14,
+          "value": 29,
+          "capabilities": [
+            "compute"
+          ]
+        },
+        {
+          "id": "C",
+          "cost": 10,
+          "value": 20,
+          "capabilities": [
+            "network"
+          ]
+        },
+        {
+          "id": "D",
+          "cost": 12,
+          "value": 22,
+          "capabilities": [
+            "storage"
+          ]
+        },
+        {
+          "id": "E",
+          "cost": 8,
+          "value": 27,
+          "capabilities": [
+            "compute",
+            "network"
+          ]
+        },
+        {
+          "id": "F",
+          "cost": 14,
+          "value": 24,
+          "capabilities": [
+            "network"
+          ]
+        },
+        {
+          "id": "G",
+          "cost": 7,
+          "value": 26,
+          "capabilities": [
+            "storage"
+          ]
+        },
+        {
+          "id": "H",
+          "cost": 10,
+          "value": 12,
+          "capabilities": [
+            "compute"
+          ]
+        },
+        {
+          "id": "I",
+          "cost": 7,
+          "value": 12,
+          "capabilities": [
+            "network"
+          ]
+        },
+        {
+          "id": "J",
+          "cost": 5,
+          "value": 25,
+          "capabilities": [
+            "storage"
+          ]
+        },
+        {
+          "id": "K",
+          "cost": 4,
+          "value": 30,
+          "capabilities": [
+            "compute"
+          ]
+        },
+        {
+          "id": "L",
+          "cost": 14,
+          "value": 23,
+          "capabilities": [
+            "network"
+          ]
+        }
+      ],
+      "forbidden_pairs": [
+        [
+          "B",
+          "E"
+        ],
+        [
+          "H",
+          "K"
+        ]
+      ],
+      "prerequisites": {
+        "J": "A",
+        "L": "D"
+      }
+    },
+    "expected": {
+      "ids": [
+        "A",
+        "E",
+        "G",
+        "K"
+      ],
+      "total_cost": 33,
+      "total_value": 108
+    },
+    "sql_fixtures": null
+  },
+  {
+    "id": "DEV51",
+    "family": "memory",
+    "public": {
+      "request": "Process events by ascending seq. set confirms a scoped value; delete removes only that scoped key; candidate never changes durable memory. Then overlay atlas on global. Return the effective atlas snapshot {key:{value:string,source_seq:int},...}, omitting absent keys. A project deletion reveals a surviving global value. Ignore boreal when constructing the atlas view.",
+      "events": [
+        {
+          "seq": 10,
+          "scope": "boreal",
+          "op": "set",
+          "key": "timezone",
+          "value": "option_a"
+        },
+        {
+          "seq": 2,
+          "scope": "boreal",
+          "op": "delete",
+          "key": "tone",
+          "value": "option_c"
+        },
+        {
+          "seq": 13,
+          "scope": "global",
+          "op": "set",
+          "key": "language",
+          "value": "option_b"
+        },
+        {
+          "seq": 9,
+          "scope": "atlas",
+          "op": "candidate",
+          "key": "tone",
+          "value": "option_a"
+        },
+        {
+          "seq": 19,
+          "scope": "boreal",
+          "op": "set",
+          "key": "tone",
+          "value": "option_c"
+        },
+        {
+          "seq": 7,
+          "scope": "boreal",
+          "op": "delete",
+          "key": "timezone",
+          "value": "option_b"
+        },
+        {
+          "seq": 5,
+          "scope": "boreal",
+          "op": "set",
+          "key": "theme",
+          "value": "option_a"
+        },
+        {
+          "seq": 3,
+          "scope": "boreal",
+          "op": "set",
+          "key": "language",
+          "value": "option_b"
+        },
+        {
+          "seq": 23,
+          "scope": "boreal",
+          "op": "candidate",
+          "key": "tone",
+          "value": "option_c"
+        },
+        {
+          "seq": 22,
+          "scope": "boreal",
+          "op": "set",
+          "key": "timezone",
+          "value": "option_c"
+        },
+        {
+          "seq": 15,
+          "scope": "global",
+          "op": "candidate",
+          "key": "tone",
+          "value": "option_c"
+        },
+        {
+          "seq": 21,
+          "scope": "atlas",
+          "op": "set",
+          "key": "tone",
+          "value": "option_b"
+        },
+        {
+          "seq": 1,
+          "scope": "boreal",
+          "op": "delete",
+          "key": "tone",
+          "value": "option_c"
+        },
+        {
+          "seq": 12,
+          "scope": "atlas",
+          "op": "set",
+          "key": "timezone",
+          "value": "option_b"
+        },
+        {
+          "seq": 11,
+          "scope": "global",
+          "op": "delete",
+          "key": "tone",
+          "value": "option_b"
+        },
+        {
+          "seq": 14,
+          "scope": "atlas",
+          "op": "delete",
+          "key": "theme",
+          "value": "option_c"
+        },
+        {
+          "seq": 20,
+          "scope": "atlas",
+          "op": "candidate",
+          "key": "timezone",
+          "value": "option_b"
+        },
+        {
+          "seq": 16,
+          "scope": "boreal",
+          "op": "set",
+          "key": "timezone",
+          "value": "option_c"
+        },
+        {
+          "seq": 4,
+          "scope": "atlas",
+          "op": "candidate",
+          "key": "language",
+          "value": "option_c"
+        },
+        {
+          "seq": 17,
+          "scope": "global",
+          "op": "candidate",
+          "key": "tone",
+          "value": "option_a"
+        },
+        {
+          "seq": 24,
+          "scope": "boreal",
+          "op": "set",
+          "key": "language",
+          "value": "option_c"
+        },
+        {
+          "seq": 6,
+          "scope": "global",
+          "op": "candidate",
+          "key": "language",
+          "value": "option_c"
+        },
+        {
+          "seq": 18,
+          "scope": "atlas",
+          "op": "set",
+          "key": "timezone",
+          "value": "option_c"
+        },
+        {
+          "seq": 8,
+          "scope": "global",
+          "op": "set",
+          "key": "language",
+          "value": "option_c"
+        }
+      ]
+    },
+    "expected": {
+      "language": {
+        "value": "option_b",
+        "source_seq": 13
+      },
+      "timezone": {
+        "value": "option_c",
+        "source_seq": 18
+      },
+      "tone": {
+        "value": "option_b",
+        "source_seq": 21
+      }
+    },
+    "sql_fixtures": null
+  },
+  {
+    "id": "DEV52",
+    "family": "memory",
+    "public": {
+      "request": "Process events by ascending seq. set confirms a scoped value; delete removes only that scoped key; candidate never changes durable memory. Then overlay atlas on global. Return the effective atlas snapshot {key:{value:string,source_seq:int},...}, omitting absent keys. A project deletion reveals a surviving global value. Ignore boreal when constructing the atlas view.",
+      "events": [
+        {
+          "seq": 20,
+          "scope": "boreal",
+          "op": "set",
+          "key": "language",
+          "value": "option_a"
+        },
+        {
+          "seq": 7,
+          "scope": "global",
+          "op": "set",
+          "key": "theme",
+          "value": "option_b"
+        },
+        {
+          "seq": 21,
+          "scope": "boreal",
+          "op": "set",
+          "key": "tone",
+          "value": "option_c"
+        },
+        {
+          "seq": 4,
+          "scope": "atlas",
+          "op": "delete",
+          "key": "timezone",
+          "value": "option_b"
+        },
+        {
+          "seq": 10,
+          "scope": "atlas",
+          "op": "candidate",
+          "key": "language",
+          "value": "option_a"
+        },
+        {
+          "seq": 22,
+          "scope": "atlas",
+          "op": "candidate",
+          "key": "timezone",
+          "value": "option_a"
+        },
+        {
+          "seq": 15,
+          "scope": "global",
+          "op": "set",
+          "key": "theme",
+          "value": "option_a"
+        },
+        {
+          "seq": 13,
+          "scope": "atlas",
+          "op": "set",
+          "key": "timezone",
+          "value": "option_b"
+        },
+        {
+          "seq": 3,
+          "scope": "boreal",
+          "op": "set",
+          "key": "theme",
+          "value": "option_c"
+        },
+        {
+          "seq": 1,
+          "scope": "global",
+          "op": "set",
+          "key": "timezone",
+          "value": "option_a"
+        },
+        {
+          "seq": 23,
+          "scope": "atlas",
+          "op": "set",
+          "key": "tone",
+          "value": "option_a"
+        },
+        {
+          "seq": 19,
+          "scope": "atlas",
+          "op": "set",
+          "key": "language",
+          "value": "option_c"
+        },
+        {
+          "seq": 8,
+          "scope": "atlas",
+          "op": "set",
+          "key": "timezone",
+          "value": "option_a"
+        },
+        {
+          "seq": 24,
+          "scope": "global",
+          "op": "candidate",
+          "key": "tone",
+          "value": "option_c"
+        },
+        {
+          "seq": 11,
+          "scope": "global",
+          "op": "delete",
+          "key": "tone",
+          "value": "option_a"
+        },
+        {
+          "seq": 12,
+          "scope": "global",
+          "op": "set",
+          "key": "theme",
+          "value": "option_a"
+        },
+        {
+          "seq": 18,
+          "scope": "atlas",
+          "op": "candidate",
+          "key": "timezone",
+          "value": "option_c"
+        },
+        {
+          "seq": 5,
+          "scope": "atlas",
+          "op": "set",
+          "key": "tone",
+          "value": "option_c"
+        },
+        {
+          "seq": 17,
+          "scope": "boreal",
+          "op": "candidate",
+          "key": "timezone",
+          "value": "option_b"
+        },
+        {
+          "seq": 2,
+          "scope": "atlas",
+          "op": "set",
+          "key": "tone",
+          "value": "option_a"
+        },
+        {
+          "seq": 6,
+          "scope": "boreal",
+          "op": "set",
+          "key": "language",
+          "value": "option_c"
+        },
+        {
+          "seq": 14,
+          "scope": "global",
+          "op": "candidate",
+          "key": "language",
+          "value": "option_c"
+        },
+        {
+          "seq": 9,
+          "scope": "global",
+          "op": "delete",
+          "key": "language",
+          "value": "option_a"
+        },
+        {
+          "seq": 16,
+          "scope": "boreal",
+          "op": "candidate",
+          "key": "tone",
+          "value": "option_b"
+        }
+      ]
+    },
+    "expected": {
+      "timezone": {
+        "value": "option_b",
+        "source_seq": 13
+      },
+      "theme": {
+        "value": "option_a",
+        "source_seq": 15
+      },
+      "tone": {
+        "value": "option_a",
+        "source_seq": 23
+      },
+      "language": {
+        "value": "option_c",
+        "source_seq": 19
+      }
+    },
+    "sql_fixtures": null
+  }
+]
